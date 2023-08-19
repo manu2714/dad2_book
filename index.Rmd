@@ -1,0 +1,27 @@
+--- 
+title: "Análisis de datos en psicología II"
+author: "Manuel Morales Ortiz"
+date: "`r Sys.Date()`"
+output: bookdown::pdf_document
+documentclass: book
+bibliography:
+- bib/packages.bib
+- bib/dad2.bib
+biblio-style: apalike
+csl: apa.csl
+description: |
+  Libro de DAD2
+link-citations: yes
+github-repo: "rstudio/bookdown-demo"
+site: bookdown::bookdown_site
+---
+
+
+
+# Prefacio {-}
+
+Este documento es el resultado de las notas de clase de la  asignatura "Diseño y Análisis de datos II" existente en el plan de estudios de graduado en psicología en la Universidad  de Sevilla. El enfoque de estos apuntes está dirigido a aquel usuario que no tiene un conocimiento profundo de matemáticas. Los análisis se realizan mediante programas informáticos en base a sistemas de ventanas [@jamovi; @spss].
+
+Los contenidos de este documento se corresponden con la segunda asignatura de análisis de datos que el área de Metodología de las Ciencias del Comportamiento tiene asignado en el plan de estudios de graduado en Psicología. Este texto debe ser la continuación de un primer curso de análisis de datos donde se hayan estudiado los contenidos relacionados con la estadística descriptiva y los fundamentos de la inferencia estadística.
+
+
