@@ -66,7 +66,7 @@ Fonetico <- c(6,6,3,4,2,5,7)
 Global <- c(4,5,6,7,8,4,8)
 ejemplo1<- data.frame(Fonetico,Global)
 tab1<- knitr::kable(t(ejemplo1),booktabs = T,caption= "Datos del ejemplo 1")
-kableExtra::row_spec(tab1,0, bold= F)
+#kableExtra::row_spec(tab1,0, bold= F)
 #kableExtra::column_spec(tab1,0, bold= T)
 ```
 
