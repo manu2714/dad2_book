@@ -1,6 +1,7 @@
 
 # Relación entre una variable cualitativa y otra cuantitativa (I): Diseños transversales
 
+
 El objetivo de este tema es introducir las técnicas de análisis de los diseños que estudian las relaciones entre una variable independiente (VI) cualitativa y una variable dependiente (VD) cuantitativa mediante la comparación de grupos. En el caso más sencillo tendremos un *factor* (variable cualitativa) con dos valores (*niveles* o *condiciones*). Esto se traduce en la creación de dos grupos. A uno de ellos se le denomina *grupo control* y al otro *grupo experimental*. @ato2 distinguen dos tipos de factores: 1) *de tratamiento*: son valores que asigna el investigador a los grupos y 2) *de clasificación:* cuando la administración no está controlada por el investigador (p.ej., el género).
 
 En este tipo de estudios se pretende buscar diferencias entre las distintas condiciones (valores de la VI). Establecer estas diferencias puede hacerse de muchas formas. Por ejemplo, en el caso del estudio de la dieta, podemos preguntarnos por el número de individuos que bajaron de peso o por el promedio de pérdida de peso en el grupo. Dependiendo de la medida que utilicemos, las técnicas estadísticas serán distintas.
@@ -24,7 +25,9 @@ knitr::include_graphics("figurasR/ANOVA1F.jpg")
 
 Como puede observarse en el diagrama son dos criterios los que nos permiten determinar la técnica estadística adecuada. En primer lugar, será necesario determinar si las muestras de los distintos grupos proceden de una distribución normal. Para ello, puede  utilizarse la prueba de *Shapiro-Wilks*. Si no existe evidencia de que las muestras estudiadas procedan de una población normal o que la distribución de los errores es normal se utilizará la técnica de *Kruskal-Wallis*.
 
-En el caso de que haya información suficiente para asumir el supuesto de normalidad será necesario determinar si las varianzas de los grupos son homogéneas o no. Para ello, puede utilizarse la *prueba de Levene*. En el caso de que no se cumpla este supuesto se utilizará la prueba de *Brown-Forsythe*. Si los  datos de nuestro estudio cumplen todos los supuestos utilizaremos la  técnica de *Anova de 1 factor completamente aleatorizado*.
+En el caso de que haya información suficiente para asumir el supuesto de normalidad será necesario determinar si las varianzas de los grupos son homogéneas o no. Para ello, puede utilizarse la *prueba de Levene*. En el caso de que no se cumpla este supuesto se utilizará la prueba de *Brown-Forsythe* [^2.1]. Si los  datos de nuestro estudio cumplen todos los supuestos utilizaremos la  técnica de *Anova de 1 factor completamente aleatorizado*.
+
+[^2.1]: Otra posibilidad es utilizar la técnica de Welch.
 
 ## ANOVA de 1 factor completamente aleatorizado
 
@@ -44,7 +47,7 @@ Como en todo contraste estadístico, se plantean dos hipótesis, $H_0$ o hipóte
 \item $H_{1}$: $\mu_{i} \neq \mu_{j}$ (i $\neq$ j) (no todas las medias son iguales)
 \end{itemize}
 
-El contraste compara las diferencias entre medias maestrales con la variabilidad experimental para decidir si ésta ha podido generar esas diferencias o no. Tanto la diferencia entre las medias (MCA) como la variabilidad experimental (varianza intrasujeto ó MCE) son dos formas de estimar la varianza poblacional. Bajo el supuesto de hipótesis nulas, ambas varianzas deben ser iguales.
+El contraste compara las diferencias entre medias maestrales con la variabilidad experimental para decidir si ésta ha podido generar esas diferencias o no. Tanto la diferencia entre las medias (MCA) como la variabilidad experimental (varianza intrasujeto ó MCE) son dos formas de estimar la varianza poblacional. Bajo el supuesto de hipótesis nula, ambas varianzas deben ser iguales.
 
 La comparación de ambas varianzas sigue una distribución de probabilidad (distribución F) que permite realizar el contraste estadístico:
 
@@ -90,7 +93,7 @@ $$
 Y_{ij} = \mu_{i} + \epsilon_i
 $$
 
-$Y_{ij}$ es cada una de las puntuaciones. Así, por ejemplo, $Y_{1A}$ será el valor del sujeto 1 en el grupo de los sanos $Y_{1A}$ = 30. Asimismo, $Y_{1B}$ será la puntuación del primer sujeto del grupo astrocitoma ($Y_{1B}$ = 16). $\mu_i$ será la media del grupo. Por tanto, $\mu_1$ será para el grupo de los individuos sanos  `r  mean(aciertos[1:5])`. Para el grupo astrocitoma será `r  mean(aciertos[6:10])`. Por último, para el grupo meduloblastoma tendremos `r mean(aciertos[11:15])`. $\epsilon_{ij}$ es un valor específico para cada individuo. Es la diferencia entre la puntuación predicha por el modelo y la puntuación obtenida por el individuo. Así, para el sujeto 1 del grupo sano la puntuación predicha será  $Y_{1Apred}$ =  25 y su error $\epsilon_{ij}$ = 30 - 25 = 5. 
+$Y_{ij}$ es cada una de las puntuaciones. Así, por ejemplo, $Y_{1A}$ será el valor del sujeto 1 en el grupo de los sanos $Y_{1A}$ = 30. Asimismo, $Y_{1B}$ será la puntuación del primer sujeto del grupo astrocitoma ($Y_{1B}$ = 16). $\mu_i$ será la media del grupo. Por tanto, $\mu_1$ será para el grupo de los individuos sanos  `r  mean(aciertos[1:5])`. Para el grupo astrocitoma será `r  mean(aciertos[6:10])`. Por último, para el grupo meduloblastoma tendremos `r mean(aciertos[11:15])`; $\epsilon_{ij}$ es un valor específico para cada individuo. Es la diferencia entre la puntuación predicha por el modelo y la puntuación obtenida por el individuo. Así, para el sujeto 1 del grupo sano la puntuación predicha será  $Y_{1Apred}$ =  25 y su error $\epsilon_{ij}$ = 30 - 25 = 5. 
 
 Otra forma de plantear este modelo es descomponiendo la puntuación de los sujetos en dos elementos: 1) la variabilidad explicada por el modelo y 2) la variabilidad no explicada por el modelo (error). De este modo, la predicción el modelo (media del grupo) puede descomponerse en dos componentes (media total + diferencia de la media del grupo con respecto a la media total):
 
@@ -102,11 +105,11 @@ donde $\mu_{..}$ es la media de todas las puntuaciones, $(\mu_j - \mu_{..})$ es 
 
               30 = `r mean(aciertos)` + `r mean(aciertos[1:5]) - mean(aciertos)`+ `r 30 - mean(aciertos[1:5])` 
         
-## 3.1. Comprobación de los supuestos
+## Comprobación de los supuestos
 
-Es necesario determinar si las muestras son independientes. Esto se asume siempre y cuando hayan sido extraídas al azar [^2]. Asimismo, se necesita determinar sin las muestras proceden de una población normal con la misma varianza. Asimismo, tendremos que comprobar que la distribución de los errores sigue una ley normal. 
+Es necesario determinar si las muestras son independientes. Esto se asume siempre y cuando hayan sido extraídas al azar [^2.2]. Asimismo, se necesita determinar sin las muestras proceden de una población normal con la misma varianza. Asimismo, tendremos que comprobar que la distribución de los errores sigue una ley normal. 
 
-[^2]: @ato2 proponen utilizar el test de Durbin-Watson para comprobar la independencia de los residuales del modelo.
+[^2.2]: @ato2 proponen utilizar el test de Durbin-Watson para comprobar la independencia de los residuales del modelo.
 
 **Prueba de normalidad** para cada uno de los grupos:
 
@@ -136,14 +139,12 @@ print(b,comment = F)
 
 ## Tamaño del efecto
 
-El tamaño del efecto pretende determinar la importancia del efecto encontrado, ya que es bastante posible encontrar diferencias significativas, que son insignificantes,  cuando los tamaños muestra les son muy grandes. Por tanto, habremos encontrado diferencias significativas en nuestro estudio, pero que resultan irrelevantes a nivel poblacional. Es decir, encontrar diferencias significativas no siempre implica que existan diferencias entre las medias a nivel poblacional.
-  
-Aunque existen distintas medidas del tamaño del efecto, aquí vamos a considerar la medida de eta cuadrado parcial corregida (calculada por el programa estadístico SPSS) y omega cuadrado que es la medida preferida por distintos investigadores [@pardo].
+El tamaño del efecto pretende determinar la importancia del efecto encontrado, ya que es bastante posible encontrar diferencias significativas, que son insustanciales,  cuando los tamaños muestrales son muy grandes. Es decir, encontrar diferencias significativas no siempre implica que existan diferencias entre las medias a nivel poblacional. Aunque existen distintas medidas del tamaño del efecto, aquí vamos a considerar la medida de eta parcial corregida al cuadrado y omega cuadrado que es la medida preferida por distintos investigadores [@pardo].
   
 El estadístico eta cuadrado parcial corregida se define como:
 
 $$
-\hat{\eta}^2_{corregida} = 1 - [(1 - \hat{\eta}^{2}(N - 1)/(N - J))] 
+\hat{\eta}^2_{pcorregida} = 1 - [(1 - \hat{\eta}^{2}(N - 1)/(N - J))] 
 $$
 
 \noindent donde,
@@ -179,7 +180,7 @@ $$
 
 Observamos que el valor de $\hat{\eta}^{2}$ es mayor que el de $\hat{\omega}^{2}$, ya que presenta estimaciones sesgadas del tamaño del efecto. No obstante, considerando el valor de $\hat{\omega}^{2}$ podemos considerar que los tamaños de efecto en este estudio son grandes aplicando el criterio propuesto por Cohen (**0.01, 0.06 y 0.14**).
 
-Cuando no se cumplen los supuestos del ANOVA, @ato2 proponen utilizar una medida directa de comparación de medias definida como $r = z\sqrt{N}$ donde *z* es la aproximación normal del estadístico U del contraste Mann-Whitney o del contraste de Kruskall-Wallis. Los criterios de clasificación son **0.1** (bajo),**0.3** (medio) y **0.5** (alto). También recomiendan el estadístico ***Delta*** de Cliff.
+Cuando no se cumplen los supuestos del ANOVA, @ato2 proponen utilizar una medida directa de comparación de medias definida como $r = z\sqrt{N}$ donde *z* es la aproximación normal del estadístico U del contraste Mann-Whitney o del contraste de Kruskall-Wallis. Los criterios de clasificación son **0.1** (bajo), **0.3** (medio) y **0.5** (alto). También recomiendan el estadístico ***Delta*** de Cliff.
 
 ##  Comparaciones a posteriori
 
@@ -228,7 +229,7 @@ t.test(c,b,var.equal =T)
 ```
 
 
-Encontramos que sólo existen diferencias significativas entre el grupo A de los individuos sanos y el grupo C de los niños con el tumos de meduloblastoma. Como el nivel de riesgo es igual a 0,005, menor que el criterio de significación de Bonferroni (0.0167) concluimos que existen diferencias significativas entre ambos grupos. Aplicando el criterio de Sidak obtendríamos las mismas conclusiones en este caso: 
+Encontramos que sólo existen diferencias significativas entre el grupo A de los individuos sanos y el grupo C de los niños con el tumor de meduloblastoma. Como el nivel de riesgo es igual a 0,005, menor que el criterio de significación de Bonferroni (0.0167) concluimos que existen diferencias significativas entre ambos grupos. Aplicando el criterio de Sidak obtendríamos las mismas conclusiones en este caso: 
 
 $$
 \alpha_{CS} = 1 - (1 - \alpha)^{1/k}  = 1 - (1 - 0,05)^{1/3} = 0.01695
@@ -272,16 +273,16 @@ los grupos A y C.
 
 ## Comparaciones de tendencia
 
-Cuando la variable factor (VI) del estudio admite la ordenación,se pueden realizar las denominadas comparaciones de tendencia que nos indica el tipo de relación existente entre las variables.
+Cuando la variable factor (VI) del estudio admite la ordenación, se pueden realizar las denominadas comparaciones de tendencia que nos indica el tipo de relación existente entre las variables.
 Pueden compararse tantas tendencias como número de niveles de factor menos 1 (*J* - 1). La tendencia más básica es la lineal que supone incrementos (o decrementos) constantes en los distintos valores del factor. Sin embargo, también es posible encontrar tendencias de tipo cuadrático, cúbico, etc. En la siguiente figura se muestran algunas de estas posibilidades.
 
 
 
-```{r, echo=FALSE,fig.cap= "Tipos de tendencia",out.width="70%"}
-knitr::include_graphics("figurasR/tenden1.png")
+```{r, echo=FALSE,fig.cap= "Tipos de tendencia",out.width="90%"}
+knitr::include_graphics("figurasR/trend_plot.png")
 ```
 
-Para determinar la existencia de una determinada tendencia es necesario realizar una serie de comparaciones entre las medias de los niveles del factor. Estas medias se multiplican por una serie de coeficientes que varían dependiendo de la tendencia queremos contrastar y de los niveles que presenta el factor. Así, por ejemplo, si la VI tiene 3 niveles los coeficientes para las tendencias lineal y cuadrática podrían ser:
+Para determinar la existencia de una determinada tendencia es necesario realizar comparaciones entre las medias de los niveles del factor. Estas medias se multiplican por una serie de coeficientes que varían dependiendo de la tendencia queremos contrastar y de los niveles que presenta el factor. Así, por ejemplo, si la VI tiene 3 niveles los coeficientes para las tendencias lineal y cuadrática podrían ser:
 
 $$
   \psi_{lineal} = (-1)\mu_1 + 0\mu2 + (1)\mu_3
@@ -300,7 +301,8 @@ $$
 $$
 El rechazo de esta hipótesis supone la existencia de tendencia y aceptación de la hipótesis alternativa $H_1: \psi_{lineal} \neq 0$).
 
-## Prueba de Brown-Forsythe
+## Estadísticos F robustos: Brown-Forsythe y Welch
+
 
 Cuando no se cumple el supuesto de homogeneidad de varianzas puede utilizarse el estadístico de Brown-Forsythe:
 
@@ -314,9 +316,31 @@ $$
 gl = \frac{1}{\sum k_{j}^2/(n_j - 1)} \;\; con \;
 k_{j}^2 = \frac{S_{j}^2 - n_jS_{j}^2/N}{\sum (S_{j}^2 - n_jS_{j}^2/N)}
 $$
+
+
+La propuesta de Welch es otra alternativa cuando no se cumple el supuesto de homogeneidad de varianzas. Su expresion es:
+
+
+$$
+F_{W} = \frac{\sum w_j(\bar{Y}_j - \bar{Y^{*}})^2/(J-1)}{1+2(J-2)\Lambda/3}
+$$
+\noindent donde
+
+$$
+w_j = \frac{n_j}{S_j^{2}}
+$$
+
+$$
+\bar{Y}^{*} = \sum{w_j}{\bar{Y}}/\sum{w_j}
+$$
+$$
+\Lambda = \frac{3\sum{[1-(w_j/\sum{w_j})]}^{2}/(n_j-1)}{J^{2} - 1}
+$$
+
+
 ### Comparaciones a posteriori
 
-Existen diferentes métodos para realizar las comparaciones a posteriori en el caso de que no se cumpla la homogeneidad de varianzas. Cuando los tamaños muestrales son grandes varios autores recomiendan el método de Games y Howell:
+Existen diferentes métodos para realizar las comparaciones a posteriori en el caso de que no se cumpla la homogeneidad de varianzas. Cuando los tamaños muestrales son grandes varios autores recomiendan el método de Games y Howell [@pardo]:
 
 $$
 DMS_{GH} = q_{J,gl; 1-\alpha_F}\sqrt{(S_{j}^2/n_{j} + S_{j'}^2/n_{j'})/2}
@@ -331,6 +355,8 @@ DMS_{T3-Dunnet} = q_{J,gl; 1-\alpha_F}\sqrt{S_{j}^2/n_{j} + S_{j'}^2/n_{j'}}
 $$
 
 \noindent donde *q* es el valor de la distribución del rango máximo estudentizado. Este estadístico esta basado en el estadístico T2 de Tamhane. La diferencia es que el estadístico T2 utiliza la distribución T de Student y la desigualdad de Sidak para controlar la tasa de error.  
+
+
 
 ## Prueba de Kuskal-Wallis (KW)
 
@@ -395,12 +421,13 @@ En este caso es adecuado aplicar el estadístico de Kruskal- Wallis.
 
 
 ```{r,echo = FALSE,results = 'asis'}
-
+library(misty)
 kruskal.test(aciertos2~grupo)
 
 b <- rank(aciertos2,ties.method = 'average')
 a= matrix(b,5,3,dimnames= list(c("s1","s2","s3","s4","s5"),c("A","B","C")))
-dat<- data.frame(b,grupo)
+dat<- data.frame(aciertos,aciertos2,b,grupo)
+write.sav(dat,"dat_kw.sav")
 library(xtable)
 a=xtable(a,caption="Rangos del ejemplo 2")
 print(a,comment = F)
@@ -432,7 +459,9 @@ Al igual que en el caso del ANOVA, para conocer cuáles son las diferencias sign
 
 ### Comparaciones a posteriori
 
-Cuando no se cumplen los supuestos de aplicación del ANOVA las comparaciones a posteriori se realizan mediante la técnica *U de Mann-Whitney* (MW). Esta prueba sirve, al igual que la prueba T de Student para comparar dos muestras independientes. Resulta útil cuando no se cumple la hipótesis de normalidad o los datos son ordinales. 
+Cuando no se cumplen los supuestos de aplicación del ANOVA las comparaciones a posteriori se realizan mediante la técnica *U de Mann-Whitney* (MW)[^2.3]. Esta prueba sirve, al igual que la prueba T de Student para comparar dos muestras independientes. Resulta útil cuando no se cumple la hipótesis de normalidad o los datos son ordinales. 
+
+[^2.3]:JAMOVI utiliza la prueba de Dwass-Steel-Critchlow-Fligner
 
 Sean dos muestras aleatorias de tamaño $n_1$ y $n_2$. Sea $R_{i}$ el rango asignado a cada una de las puntuaciones cuando se toman todas en conjunto como si fuera una única muestra. A continuación, se calculan los siguientes estadísticos $S_1$ y $S_2$ que corresponden a la suma de los rangos de las observaciones del grupo 1 y grupo 2 respectivamente:
 
@@ -492,7 +521,49 @@ cliff.delta(b[6:10],b[11:15],return.dm = T)
 ```
 
 
-Si consideramos un criterio de significación $\alpha$ = 0,05 tenemos corregir el azar debido a que hemos realizado más de un test. Aplicando el criterio de Bonferroni ($\alpha_C$ = 0,05/3 = 0.0167) concluimos que no hay ninguna diferencia significativa. La misma conclusión obtendríamos si aplicáramos la corrección de Sidak ($\alpha_C$ = 0,017)
+Si consideramos un criterio de significación $\alpha$ = 0,05 tenemos que corregir el azar debido a que hemos realizado más de un test. Aplicando el criterio de Bonferroni ($\alpha_C$ = 0,05/3 = 0.0167) concluimos que no hay ninguna diferencia significativa. La misma conclusión obtendríamos si aplicáramos la corrección de Sidak ($\alpha_C$ = 0,017).
+
+El problema de utilizar la prueba de U de Mann-Whitney para realizar las comparaciones a posteriori es que no se mantienen los rangos del conjunto de observaciones, produciéndose un reajuste de los rangos en cada una de las comparaciones dos a dos. Existen varias alternativas a este procedimiento como la prueba de Dunn, la de Conover, el test de Nemenyi o la prueba de Dwass-Steel-Critchlow-Fligner (DSCF). En el programa de JAMOVI las comparaciones a posteriori se realizan mediante la prueba de (DSCF). Se considera que un contraste es significativo si satisface:
+
+$$
+W_j = -\frac{n_i(ni+n_j+1)}{2}/\frac{n_in_j}{24}\times \Lambda > q_{\alpha,k}, \quad \text{para} \quad 1\leq i\leq j\leq k
+$$
+
+\noindent donde:
+
+$$
+\Lambda = n_i+n_j -1-\frac{\sum_{b=1}^{g_{ij}}{(t_{b}-1)tb(t_{b}+1)}}{(n_i +n_j)(n_i+n_j -1)}
+$$
+
+\noindent $q_{\alpha,k}$ es una cuantila de la distribución normal de los rangos para *k* grupos, $n_i$ es el número de sujetos del *i-ésimo* grupo, $n_j$ es el número de sujetos del *j-ésimo* grupo, $t_b$ es el número de ocurrencias en el rango *b* y $W_{ij}$ es la suma de los rangos para el *i-ésimo* grupo donde los rangos se han comparado con el grupo *j*. Los resultados de aplicar esta prueba aparecen a continuación. Encontramos que sólo aparecen diferencias entre los grupos A y C.
+
+
+```{r,echo= FALSE, message = F}
+library(PMCMRplus)
+library(NSM3)
+DSCF<- dscfAllPairsTest(b~grupo,data=dat)
+DSCF
+# DSCF1<- dscfAllPairsTest(b~grupo,data=dat, p.adjust= "BH")
+# #DSCF1<- pSDCFlig(x= aciertos2, g=grupo)
+# #str(DSCF)
+# DSCF
+# DSCF1
+# # CT = kwAllPairsConoverTest(b ~ grupo, data=dat)
+# # CT
+# # 
+# # NT = kwAllPairsNemenyiTest(b ~ grupo, data=dat)
+# # NT
+# # 
+# DT = kwAllPairsDunnTest(b ~ grupo, data=dat)
+# DT
+# 
+# DT1 = kwAllPairsDunnTest(b ~ grupo, data=dat, p.adjust= "bonferroni")
+# DT1
+# 
+# DT2 = kwAllPairsDunnTest(b ~ grupo, data=dat, p.adjust= "BH")
+# DT2
+
+```
 
 
 ## ANOVA de un factor con JAMOVI
@@ -504,7 +575,7 @@ Este programa incluye un módulo específico para las técnicas de ANOVA donde a
 knitr::include_graphics("figurasR/anova1fa_jamovi.png")
 ```
 
-En la opción *"ANOVA de un factor"* es posible elegir entre la prueba de Fisher que asume homogeneidad de varianzas y la prueba de Welch que no asume igualdad de las varianzas. 
+En la opción *"ANOVA de un factor"* es posible elegir entre la prueba de Fisher que asume homogeneidad de varianzas y la prueba de Welch que no asume igualdad de las varianzas. En esta opción se pueden introducir más de una VD. 
 
 ```{r, echo=FALSE,fig.cap= "Opciones ANOVA en el programa JAMOVI",out.width="50%"}
 knitr::include_graphics("figurasR/anova1fb_jamovi.png")
@@ -518,7 +589,7 @@ knitr::include_graphics("figurasR/anova1fg_jamovi.png")
 ```
 
 
-Si se elige la opción de *"ANOVA"* sólo estará disponible la posibilidad de comparar grupos con varianzas homogéneas. Sin embargo, esta opción presenta la ventaja de obtener diferentes medidas del tamaño del efecto.
+Si se elige la opción de *"ANOVA"* sólo estará disponible la posibilidad de comparar grupos con varianzas homogéneas. Sin embargo, esta opción presenta la ventaja de obtener diferentes medidas del tamaño del efecto y pueden incluirse varias VVII para estudiar el efecto de la interacción entre ellas. 
 
 
 ```{r, echo=FALSE,fig.cap= "Opciones ANOVA en el programa JAMOVI",out.width="50%"}
@@ -543,7 +614,7 @@ Este  análisis puede realizarse en el programa SPSS con dos  procedimientos: Pr
 knitr::include_graphics("figurasR/anova1Fspss.jpg")
 ```
 
-Este procedimiento dispone de varias opciones.Pulsando en la opción de *"Contrastes"* se puede realizar comparaciones de tendencias (polinómicas).
+Este procedimiento dispone de varias opciones. Pulsando en la opción de *"Contrastes"* se puede realizar comparaciones de tendencias (polinómicas).
 
 
 ```{r, echo=FALSE,fig.cap= "Prueba t para muestras relacionadas en SPSS",out.width="60%"}
@@ -567,7 +638,7 @@ knitr::include_graphics("figurasR/anova1f3_spss.png")
 
 Si se utiliza el procedimiento de *Modelo lineal general* hay que seguir la siguiente secuencia  *Analizar + Modelo lineal general + Univariado*. Mediante este procedimiento también se dispone de las opciones anteriormente vistas.
 
-Para realizar la prueba de Kruskal-Wallis hay que seguir la siguiente secuencia *Analizar + Pruebas no paramétricas + muestras independientes*.El programa realiza de manera automática el contraste de Kruskal-Wallis y las comparaciones *a posteriori* usando la corrección de bonferroni.
+Para realizar la prueba de Kruskal-Wallis hay que seguir la siguiente secuencia *Analizar + Pruebas no paramétricas + muestras independientes*. El programa realiza de manera automática el contraste de Kruskal-Wallis y las comparaciones *a posteriori* usando la corrección de Bonferroni.
 
 
 ```{r, echo=FALSE,fig.cap= "Prueba de Kruskal-Wallis en SPSS",out.width="60%"}
@@ -578,5 +649,7 @@ knitr::include_graphics("figurasR/anova1f1_spss_kw.png")
 ```{r, echo=FALSE,fig.cap= "Comparaciones en la prueba Kruskal-Wallis en SPSS",out.width="60%"}
 knitr::include_graphics("figurasR/anova1f1_spss_kw2.png")
 ```
+
+
 
 

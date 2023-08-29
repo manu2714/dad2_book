@@ -1,15 +1,11 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
+
 # Diseños factoriales (II): Diseño factorial con medidas repetidas (A2FMR y A2FMX)
 
-En este tema vamos a estudiar los diseños factoriales con al menos un factor con medidas repetidas. Consideramos sólo los diseños balanceados (todas las condiciones del diseño tienen el mismo número de observaciones y/o sujetos). Asimismo, consideraremos sólo aquellos casos en los que todos los factores son fijos salvo los sujetos. Dos son los diseños que se estudiaran: 1) Diseño factorial *axb* de medidas repetidas donde se utiliza la estrategia longitudinal para estudiar ambas variables, y 2) diseño factorial mixto *axb* donde una variable se estudia mediante la estrategia intrasujeto y otra mediante la estrategia entresujetos.
+En este tema vamos a estudiar los diseños factoriales con al menos un factor con medidas repetidas. Consideramos sólo los diseños balanceados (todas las condiciones del diseño tienen el mismo número de observaciones y/o sujetos). Asimismo, consideraremos sólo aquellos casos en los que todos los factores son fijos salvo los sujetos. Dos son los diseños que se estudiaran: 1) Diseño factorial *a*x*b* de medidas repetidas donde se utiliza la estrategia longitudinal para estudiar ambas variables, y 2) diseño factorial mixto *a*x*b* donde una variable se estudia mediante la estrategia intrasujeto y otra mediante la estrategia entresujetos.
 
 La principal ventaja de este tipo de diseños es que se necesitan un número menor de sujetos para realizar la investigación si lo comparamos con un diseño completamente aleatorizado. Asimismo, permite conocer la variabilidad debida a los sujetos por lo que puede eliminarse este factor. Su principal inconveniente es la presencia de VVEE relacionadas con el hecho de aplicar varias condiciones a un mismo sujeto.  
 
-En este tipo de diseños interesa conocer tres fuentes de variación (debidas a los tratamientos *A*, de *B* y el de la interacción *AB*). La determinación de la significación de estas fuentes de variación se realiza comparando la correspondiente fuente de variación con la del error. En los diseños de medidas repetidas también hay otra fuente de variación conocida que es la de los sujetos (S). Por lo general, se asume que las interacciones entre esta fuente variación de los sujetos y la de los tratamientos deben ser nulas. Por tanto, las interacciones SXA, SxB y SxAB son componentes del error del diseño cada efecto debe ser comparado con su correspondiente término de error para el cálculo del estadístico F. 
+En este tipo de diseños interesa conocer tres fuentes de variación (debidas a los tratamientos *A*, *B* y el de la interacción *AB*). La determinación de la significación de estas fuentes de variación se realiza comparando la correspondiente fuente de variación con la del error. En los diseños de medidas repetidas también hay otra fuente de variación conocida que es la de los sujetos (S). Por lo general, se asume que las interacciones entre esta fuente de variación de los sujetos y la de los tratamientos deben ser nulas. Por tanto, las interacciones SXA, SxB y SxAB son componentes del error del diseño y cada efecto debe ser comparado con su correspondiente término de error para el cálculo del estadístico F. 
 
 
 ## Diseño factorial intrasujeto
@@ -34,9 +30,9 @@ Al igual que en otros modelos de ANOVA factoriales, el investigador está intere
 
 Un ejemplo de este tipo de diseños propuesto por @maxwell en el que se deseaba estudiar el efecto de la presencia de distractores (ruido o sin ruido) y la orientación del estímulo (0 , 4 y 8 grados) en una prueba de percepción donde se pretende discriminar entre dos estímulos. La VD fue el tiempo de reacción. Los resultados aparecen en la siguiente tabla:
 
-\newpage
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Tabla de datos",fig.align='center',out.width="70%",eval=FALSE}
+
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Tabla de datos",fig.align='center',out.width="90%",eval=FALSE}
 
 knitr::include_graphics("figurasR/datos51.png")
 ```
@@ -67,7 +63,7 @@ knitr::include_graphics("figurasR/resultados51_jamovi.png")
 
 
 
-Estos resultados son válidos siempre y cuando se cumpla el supuesto de esfericidad estudiado en el tema 4. Una vez comprobado este supuesto con la prueba de Mauchly pueden tomarse decisiones acerca de la significación de los efectos. En este ejemplo se obtienen los siguientes resultados en relación con la prueba de esfericidad. Podemos observar que los valores de $\epsilon$ de Geisser-Greenhouse (GG) son más pequeños que los de Huynh-Feldt (HF). Utilizar los valores de GG para realizar los contrastes de hipótesis supone aplicar una estrategia conservadora en el análisis de los datos.  
+Estos resultados son válidos siempre y cuando se cumpla el supuesto de esfericidad estudiado en el tema 3. Una vez comprobado este supuesto con la prueba de Mauchly pueden tomarse decisiones acerca de la significación de los efectos. En este ejemplo se obtienen los siguientes resultados en relación con la prueba de esfericidad. Podemos observar que los valores de $\epsilon$ de Geisser-Greenhouse (GG) son más pequeños que los de Huynh-Feldt (HF). Utilizar los valores de GG para realizar los contrastes de hipótesis supone aplicar una estrategia conservadora en el análisis de los datos.  
 
 
 ```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR: Prueba de esfericidad",fig.align='center',out.width="70%"}
@@ -100,13 +96,12 @@ $$
 \omega_{AB}^2 = \frac{(a-1)(b-1)(F_{AB} - 1)}{(a-1)(b-1)(F_{AB} - 1)+ nab} = \frac{(3-1)*(45.310 - 1)}{(3-1)*(45.310 - 1) + 10*2*3} = 0.596
 $$
 
-\noindent Si hubiéramos utilizado el estadístico $\eta^2$ proporcionado por el programa SPSS obtendríamos los siguientes valores: 0.79 para el factor A, 0.819 para el factor B y 0.834 para el factor AB. Tal y como señalan @pardo estos valores están bastante inflados y no son un buen estimador del tamaño del efecto. 
-
+\noindent Si hubiéramos utilizado el estadístico $\eta^2$ proporcionado por el programa SPSS obtendríamos los siguientes valores: 0.79 para el factor A, 0.819 para el factor B y 0.834 para el factor AB. Tal y como señalan @pardo estos valores están bastante inflados y no son un buen estimador del tamaño del efecto. Otra medida de tamaño del efecto equivalente al de $\omega^{2}$ es la de eta generalizada al cuadrado ($\eta_g^{2}$) que utiliza el programa JAMOVI [@jamovi].
+ 
 #### Estudio de la interacción
 
-Al igual que se mencionó en el tema 4, para estudiar los efectos interactivos lo que tenemos que hacer es comparar los efectos simples. En este diseño tenemos 3 efectos simples por lo que habrá que realizar tres comparaciones:
+Al igual que se mencionó en el tema 4, para estudiar los efectos interactivos lo que tenemos que hacer es comparar los efectos simples. En este diseño tenemos 3 efectos simples por lo que habrá que realizar tres comparaciones. La primera comparación sería la siguiente:
 
- + Para introducir los coeficientes de los contrastes es necesario seguir el orden de las condiciones que aparecen en el fichero de datos.  La forma más sencilla de realizar este contraste es creando una nueva variable con la suma de las puntuaciones de las medias que se comparan. En este caso, estamos realizando lo siguiente:
 
 $$
 \phi_1 = \mu_{ausente.a0} - \mu_{presente.a0} -  (\mu_{ausente.a4} - (\mu_{presente.a4}) =  \mu_{a_1b_1} - \mu_{a_2b_1} - (\mu_{a_1b_2} -  \mu_{a_2b_2})
@@ -114,7 +109,12 @@ $$
 
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación efectos simples",fig.align='center',out.width="70%"}
+ + Para introducir los coeficientes de los contrastes es necesario seguir el orden de las condiciones que aparecen en el fichero de datos.  La forma más sencilla de realizar este contraste es creando una nueva variable con la suma de las puntuaciones de las medias que se comparan. En este caso, estamos realizando lo siguiente:
+
+
+
+
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en JAMOVI: Comparación efectos simples",fig.align='center',out.width="70%"}
 
 knitr::include_graphics("figurasR/contraste1_jamovi.png")
 ```
@@ -123,7 +123,7 @@ knitr::include_graphics("figurasR/contraste1_jamovi.png")
 \noindent Esta nueva variable creada (*Contraste 1*) supone una combinación lineal (suma de varias puntuaciones correspondientes a 4 variables). Bajo el modelo de hipótesis nula la suma de esta variable debe ser igual a 0. Para contrastar esta hipótesis podemos utiliazar la prueba T para una muestra (o la prueba de Wilcoxon en el caso de que no se cumpla el supuesto de normalidad). Los resultados de este análisis nos indican que rechazamos la hipótesis nula. Es decir existe un efecto interactivo significativo cuando se comparan los efectos simples de A en $b_1$ y $b_2$. 
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Resultado de la comparación del efecto de A en $b_1$ y $b_2$",fig.align='center',out.width="60%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en JAMOVI: Resultado de la comparación del efecto de A en $b_1$ y $b_2$",fig.align='center',out.width="60%"}
 
 knitr::include_graphics("figurasR/contraste1res_jamovi.png")
 ```
@@ -180,42 +180,48 @@ $$
 
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación de efectos simples",fig.align='center',out.width="60%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en JAMOVI: Comparación de efectos simples",fig.align='center',out.width="60%"}
 
 knitr::include_graphics("figurasR/contraste2_jamovi.png")
 ```
 
-\newpage
 
 \noindent Los resultados obtenidos con este segundo contraste se muestran en la siguiente figura:
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación de efectos simples",fig.align='center',out.width="60%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en JAMOVI: Comparación de efectos simples",fig.align='center',out.width="60%"}
 
 knitr::include_graphics("figurasR/contraste2res_jamovi.png")
 ```
 
-\noindent Encontramos de nuevo que el efecto de A en $b_1$ es mucho menor que cuando está presente $b_3$. El efecto de A en $b1$ vale `r mean(datos[,1] - datos[,4])`. En cambio, cuando está presente $b_3$ el valor es `r mean(datos[,3] - datos[,6])`.
+\noindent Encontramos de nuevo que el efecto de A en $b_1$ es mucho menor que cuando está presente $b_3$. El efecto de A en $b_1$ vale `r mean(datos[,1] - datos[,4])`. En cambio, cuando está presente $b_3$ el valor es `r mean(datos[,3] - datos[,6])`. Para terminar nos queda ver si existen diferencias en el efecto de A cuando está presente $b_2$ en comparación con la presencia de $b_3$. Sabemos que cuando está presente $b_2$ el efecto de A vale `r mean(datos[,2] - datos[,5])`, mientras que cuando está presente $b_3$ vale `r mean(datos[,3] - datos[,6])`. 
 
-Para terminar nos queda ver si existen diferencias en el efecto de A cuando está presente $b_2$ en comparación con la presencia de $b_3$. Sabemos que cuando está presente $b_2$ el efecto de A vale `r mean(datos[,2] - datos[,5])`, mientras que cuando está presente $b_3$ vale `r mean(datos[,3] - datos[,6])`. Para determinar la significación de esta comparación el procedimiento es el mismo que en los casos anteriores. Los resultados de este tercer contraste sería:
+Para determinar la significación de esta comparación el procedimiento es el mismo que en los casos anteriores. La comparación sería la siguiente:
 
-\newpage
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación de efectos simples",fig.align='center',out.width="60%"}
+$$
+\phi_3 = \mu_{ausente.a4} - \mu_{presente.a4} -  (\mu_{ausente.a8} - (\mu_{presente.a8}) =  \mu_{a_1b_2} - \mu_{a_2b_2} - (\mu_{a_1b_3} -  \mu_{a_2b_3})
+$$
+
+
+\noindent Los resultados de este tercer contraste sería:
+
+
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en JAMOVI: Comparación de efectos simples",fig.align='center',out.width="60%"}
 
 knitr::include_graphics("figurasR/contraste3_jamovi.png")
 ```
 
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación de efectos simples",fig.align='center',out.width="60%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en JAMOVI: Comparación de efectos simples",fig.align='center',out.width="60%"}
 
 knitr::include_graphics("figurasR/contraste3res_jamovi.png")
 ```
 
 \noindent Estos resultados indican que también existen diferencias en la comparación de los efectos simples.
 
-**Conclusiones según normas APA: Se encontró la existencia de interacción entre las variables *ángulo* y el *distractor* (F(2,18) = 45.31, p< .001, $\eta_p^{2}$ = 0.67, indicando un TE grande). Se encontró que las  diferencias en las medidas de presencia - ausencia con ángulo de 0 grados fueron menores cuando el ángulo fue de 4 grados (t(9)= 6.7, p < .001). También la diferencia ausencia - presencia fue mayor a los 8 grados que a los 0 (t(9)= 9.1, p < .001). Asimismo, el efecto de la presencia del ruido fue mayor a los 8 grados que a los 4 (t(9)= 3.5, p = .007)**
+**Conclusiones según normas APA:** ***Se encontró la existencia de interacción entre las variables \emph{ángulo} y el \emph{distractor} (F(2,18) = 45.31, p< .001, $\eta_p^{2}$ = 0.67, indicando un TE grande). Se encontró que las  diferencias en las medidas de presencia - ausencia con ángulo de 0 grados fueron menores cuando el ángulo fue de 4 grados (t(9)= 6.7, p < .001). También la diferencia ausencia - presencia fue mayor a los 8 grados que a los 0 (t(9)= 9.1, p < .001). Asimismo, el efecto de la presencia del ruido fue mayor a los 8 grados que a los 4 (t(9)= 3.5, p = .007).***
 
 
 ## Diseño factorial mixto (A2FMX)
@@ -227,7 +233,7 @@ Hay ocasiones en las que interesa al investigador conocer si el efecto de una VI
 Ilustramos este tipo de diseños con un estudio en el que se realizó un seguimiento de un grupo de pacientes lesionados en distintos momentos del tratamiento. La VI que se estudio de manera longitudinal es el paso del *tiempo* (inicio, mitad y final); la VI que agrupa a los sujetos es la *localización de la lesión* (hemisferio izquierdo *versus* hemisferio derecho). La VD fueron los resultados en una prueba de memoria. En la siguiente tabla se presentan los descriptivos para cada una de las condiciones:
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Gráfica del ejemplo 2",fig.align='center',out.width="70%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Datos del ejemplo 2",fig.align='center',out.width="70%"}
 
 knitr::include_graphics("figurasR/desc52_jamovi.png")
 ```
@@ -285,7 +291,7 @@ Los resultados de este ejemplo indican la existencia de una interacción signifi
 
 \newpage
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Resultados del ejemplo 2",fig.align='center',out.width="70%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en JAMOVI: Resultados del ejemplo 2",fig.align='center',out.width="70%"}
 
 knitr::include_graphics("figurasR/res52_jamovi.png")
 ```
@@ -294,7 +300,7 @@ Para considerar como válidos estos resultados es necesario que se cumplan los s
 
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Prueba de esfericidad del ejemplo 2",fig.align='center',out.width="70%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en JAMOVI: Prueba de esfericidad del ejemplo 2",fig.align='center',out.width="70%"}
 
 knitr::include_graphics("figurasR/esfericidad52_jamovi.png")
 ```
@@ -303,7 +309,7 @@ knitr::include_graphics("figurasR/esfericidad52_jamovi.png")
 
 #### Medidas del tamaño del efecto
 
-El estadístico $\eta^2$ parcial nos permite obtener una estimación del tamaño del efecto aunque ya se ha mencionado que no es un buen estimador siendo preferible utilizar el estadístico $omega^2$. Para este diseño la fórmula es:
+El estadístico $\eta^2$ parcial nos permite obtener una estimación del tamaño del efecto aunque ya se ha mencionado que no es un buen estimador siendo preferible utilizar el estadístico $\omega^2$ o $\eta_g^{2}$. Para este diseño la fórmula es:
 
   + Para el efecto de A:
 
@@ -325,10 +331,10 @@ $$
 
 #### Comparaciones múltiples
 
-En el caso de que no resulte signficativo el efecto de la interacción AB y exista algún efecto principal (A y/o B) significativo habrá que continuar realizando las comparaciones *a posteriori* tal y como se indicó en los temas anteriores. Si el efecto interactivo AB resulta significativo será necesarios realizar las comparaciones de los efectos simples. Para ello se calculan las diferencias entre las distintas medidas repetidas. Esas diferencias se comparan entre los distintos grupos tal y como se hizo en el tema 1 para la comparación de muestras independientes. En nuestro caso los resultados aparecen en la siguiente tabla:
+En el caso de que no resulte signficativo el efecto de la interacción AB y exista algún efecto principal (A y/o B) significativo habrá que continuar realizando las comparaciones *a posteriori* tal y como se indicó en los temas anteriores. Si el efecto interactivo AB resulta significativo será necesario realizar las comparaciones de los efectos simples. Para ello se calculan las diferencias entre las distintas medidas repetidas. Esas diferencias se comparan entre los distintos grupos tal y como se hizo en el tema 1 para la comparación de muestras independientes. En nuestro caso los resultados aparecen en la siguiente tabla:
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación de los efectos simples",fig.align='center',out.width="70%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en JAMOVI: Comparación de los efectos simples",fig.align='center',out.width="70%"}
 
 knitr::include_graphics("figurasR/simples52_jamovi.png")
 ```
@@ -336,8 +342,7 @@ knitr::include_graphics("figurasR/simples52_jamovi.png")
 
 \noindent Encontramos que las comparaciones inicio - final y mitad-menos final fueron significativas. muestran diferencias significativas. 
 
-**Conclusiones según normas APA:  Se encontró la existencia de interacción entre las variables *tipo de lesión* y el *tiempo* (F(2,14) = 12.49, p< .001, $\eta_p^{2}$ = 0.67, indicando un TE grande). Se encontró que las  diferencias en las medidas inicio y final fueron mayores en los pacientes con lesión en el hemisferio derecho (t(8)= 3.92, p = .004). También la diferencia entre la mitad y final del estudio fue mayor en los lesionados en el hemisferio derecho (t(8)= 4.67, p = .002)**.
-
+**Conclusiones según normas APA:** ***Se encontró la existencia de interacción entre las variables *tipo de lesión* y el *tiempo* (F(2,14) = 12.49, p< .001, $\eta_p^{2}$ = 0.67, indicando un TE grande). Se encontró que las  diferencias en las medidas inicio y final fueron mayores en los pacientes con lesión en el hemisferio derecho (t(8)= 3.92, p = .004). También la diferencia entre la mitad y final del estudio fue mayor en los lesionados en el hemisferio derecho (t(8)= 4.67, p = .002)}.***
 
 
 ## Análisis de los ejemplos con SPSS
@@ -355,7 +360,7 @@ knitr::include_graphics("figurasR/anovamr6b.jpg")
 ```
 
 
-\noindent Al igual que en el tema 4 necesitamos introducir los datos. En este caso debemos indicar que son dos los factores que existen en el diseño uno con dos valores (factor A) y otro con 3 (factor B). Hay que asignar un nombre a cada variable e indicar el número de niveles:
+\noindent Al igual que en el tema 3 necesitamos introducir los datos. En este caso debemos indicar que son dos los factores que existen en el diseño uno con dos valores (factor A) y otro con 3 (factor B). Hay que asignar un nombre a cada variable e indicar el número de niveles:
 
 
 
@@ -367,14 +372,14 @@ knitr::include_graphics("figurasR/variables51.png")
 
 La prueba de esfericidad nos indica la idoneidad de estos resultados. Podemos observar que los valores de $\epsilon$ de Geisser-Greenhouse (GG) son más pequeños que los de Huynh-Feldt (HF). Utilizar los valores de GG para realizar los contrastes de hipótesis supone aplicar una estrategia conservadora en el análisis de los datos.  
 
-\newpage
+
 
 ```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR: Prueba de esfericidad",fig.align='center',out.width="60%"}
 
 knitr::include_graphics("figurasR/esfericidad52b.png")
 ```
 
-
+\newpage
 
 \noindent En la siguiente figura aparece la tabla ANOVA con los resultados obtenidos en el estudio:
 
@@ -385,7 +390,6 @@ knitr::include_graphics("figurasR/esfericidad52b.png")
 knitr::include_graphics("figurasR/tabla51d2.png")
 ```
 
-\newpage
 
 #### Estudio de la interacción
 
@@ -406,7 +410,6 @@ knitr::include_graphics("figurasR/contraste1res.png")
 
 2. Creamos una nueva variable que denominamos *Contraste 2* de la siguiente forma:
 
-\newpage
 
 ```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación de efectos simples",fig.align='center',out.width="60%"}
 
@@ -432,11 +435,12 @@ knitr::include_graphics("figurasR/contraste3resb.png")
 ```
 
 
+
 #### Efectos simples con el programa SPSS
 
 El programa SPSS presenta una tabla donde aparecen las comparaciones entre los distintos efectos simples:
 
-\newpage
+
 
 ```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación de efectos simples",fig.align='center',out.width="70%"}
 
@@ -466,14 +470,14 @@ knitr::include_graphics("figurasR/contrastes3spssb.png")
 
 En el caso de que el efecto de la interacción no sea significativo este diseño también permite estudiar los efectos principales. Para ello, se aplica el mismo procedimiento que el utilizado cuando se estudiaron los diseños de medidas repetidas con 1 factor. Así, compararemos las diferencias entre las medias (varianza del tratamiento A o B) con su correspondiente término de error (interacción SxA en el caso de la VI A e interacción SxB en el caso de la VI B). Si estos contrastes resultan significativos habrá que continuar para determinar la significación entre las distintas condiciones. Esto puede hacerse con el procedimiento estudiado anteriormente en el programa SPSS (opción de *Contrastes + Comparaciones simples*), en el caso de que se cumpla el supuesto de la esfericidad. Si no se cumple este supuestos, pueden realizarse comparaciones dos a dos corrigiendo el nivel de riesgo con el criterio de *Bonferroni*.
 
-\newpage
+
 
 
 ```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación de efectos simples",fig.align='center',out.width="70%"}
 
 knitr::include_graphics("figurasR/contrastes4spssb.png")
 ```
-\newpage
+
 
 ### Análisis del ejemplo 2 con SPSS
 
