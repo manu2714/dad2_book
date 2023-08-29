@@ -18,10 +18,24 @@ site: bookdown::bookdown_site
 
 
 
-# Prefacio {-}
+# Prologo {-}
 
-Este documento es el resultado de las notas de clase de la  asignatura "Diseño y Análisis de datos II" existente en el plan de estudios de graduado en psicología en la Universidad  de Sevilla. El enfoque de estos apuntes está dirigido a aquel usuario que no tiene un conocimiento profundo de matemáticas. Los análisis se realizan mediante programas informáticos en base a sistemas de ventanas [@jamovi; @spss].
+Este documento es el resultado de las notas de clase de la  asignatura "Diseño y Análisis de datos II" existente en el plan de estudios de graduado en psicología en la Universidad  de Sevilla. El enfoque de estos apuntes está dirigido a aquel usuario que no tiene un conocimiento profundo de matemáticas. Este texto debe ser la continuación de un primer curso de análisis de datos donde se hayan estudiado los contenidos relacionados con la estadística descriptiva y los fundamentos de la inferencia estadística.
 
-Los contenidos de este documento se corresponden con la segunda asignatura de análisis de datos que el área de Metodología de las Ciencias del Comportamiento tiene asignado en el plan de estudios de graduado en Psicología. Este texto debe ser la continuación de un primer curso de análisis de datos donde se hayan estudiado los contenidos relacionados con la estadística descriptiva y los fundamentos de la inferencia estadística.
+La enseñanza de las materias de análisis de datos suelen ir asociadas al uso de un determinado programa informático que facilite el cálculo de los resultados que de otra manera podrían resultar tediosos. La elección del programa informático debe tener en cuenta la audiencia a la que va dirigido. En el campo de la psicología está muy extendido el uso del programa IBM SPSS [@spss], estando presente en una gran parte de las universidades. Sin embargo, la necesidad de disponer de licencia de pago implica que los futuros usuarios tengan dificultades para disponer de dicho programa una vez que abandonan la universidad. Para solucionar este problema se suele recurrir a programas de libre distribución como el programa R [@R]. El inconveniente que presenta este programa es su curva de aprendizaje. Dado que el periodo de enseñanza es muy limitado en los planes de estudio, iniciarse en este programa supone una reducción del tiempo disponible para la enseñanza de los contenidos propios de la asignatura. Para solventar este problema hemos recurrido al programa JAMOVI [@jamovi]. Este programa permite aprovechar la flexibilidad y posibilidades de R utilizando un sistema de ventanas más adecuado a las habilidades de los estudiantes de psicología.   
 
+Este documento se compone de 6 capítulos. En el primero  se realiza una introducción a la lógica de la investigación científica. También se realiza un recordatorio de los fundamentos de la inferencia estadística con aplicación de algunas técnicas estadísticas básicas. En los capítulos 2 a 5  se presenta la técnica de ANOVA para estudiar relaciones entre variables (relaciones entre 1 variable independiente y una dependiente en los temas 2 y 3 y relaciones con más de una VI en los temas 4 y 5).
+
+Este trabajo ha sido posible gracias a muchas personas. En primer lugar, a toda la comunidad R por los desarrollos del programa R y en particular a @Xie2023 por el desarrollo de programas como knitr o bookdown. Asimismo, este trabajo se ha visto beneficiado del trabajo de @LuqueCalvo2017. Asimismo, a mis alumnos que han sido los mejores revisores del trabajo  aquí expuesto. 
+
+
+
+Este trabajo ha sido elaborado bajo las condiciones de la licencia de Creative Commons
+https://creativecommons.org/share-your-work/public-domain/cc0:
+
+```{r, echo=FALSE,fig.align='center',out.width="30%"}
+knitr::include_graphics("figurasR/cc-zero.png")
+```
+
+Agosto de 2023.
 
