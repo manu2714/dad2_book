@@ -17,14 +17,13 @@
 }
 
 @Book{pardo,
-  Title                    = {Análisis de datos en ciencias sociales y de la salud},
-  Author                   = {Pardo, A. and SanMartin, R.},
-  Location                 = {Madrid},
-  Publisher                = {Síntesis},
-  Year                     = {2010},
-
-  Owner                    = {Manuel},
-  Timestamp                = {2015.08.27}
+  author    = {Pardo, A. and SanMartin, R.},
+  publisher = {Síntesis},
+  title     = {Análisis de datos en ciencias sociales y de la salud {II}},
+  year      = {2010},
+  location  = {Madrid},
+  owner     = {Manuel},
+  timestamp = {2015.08.27},
 }
 
 @Book{ato2,
@@ -52,7 +51,7 @@
   url    = {http://destio.us.es/calvo},
 }
 
-@Manual{RCT2016,
+@Manual{R,
   title        = {R: A Language and Environment for Statistical Computing},
   address      = {Vienna, Austria},
   author       = {{R Core Team}},
@@ -241,16 +240,6 @@
   title     = {Métodos de investigación en Psicología},
   year      = {1995},
   address   = {Madrid},
-}
-
-@Book{Pardo2010,
-  author    = {Pardo, A. and SanMartin, R.},
-  publisher = {Síntesis},
-  title     = {Análisis de datos en ciencias sociales y de la salud},
-  year      = {2010},
-  address   = {Madrid},
-  owner     = {Manuel},
-  timestamp = {2015.08.27},
 }
 
 @Manual{jamovi,

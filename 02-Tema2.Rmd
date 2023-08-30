@@ -57,7 +57,7 @@ $$
 
 Se rechaza $H_{0}$ si el estadístico F cae dentro de la región crítica; en caso contrario, se mantiene. Si se rechaza esta hipótesis se concluye que no todas las medias son iguales.
 
-*Ejemplo 1 :* A continuación se presentan los datos de un estudio en el que se quiso comparar los resultados en una prueba de atención de tres grupos de 5 niños (A = sanos, B = con tumor astrocitoma y C = con tumor meduloblastoma)
+*Ejemplo 2.1 :* A continuación se presentan los datos de un estudio en el que se quiso comparar los resultados en una prueba de atención de tres grupos de 5 niños (A = sanos, B = con tumor astrocitoma y C = con tumor meduloblastoma)
 
 ```{r Ej1,echo=FALSE, results="asis"}
 aciertos = c(30,35,15,21,24,16,5,22,23,22,10,7,15,6,12)
@@ -68,12 +68,12 @@ a= matrix(aciertos,5,3,dimnames= list(c("s1","s2","s3","s4","s5"),c("A","B","C")
 dat<- data.frame(aciertos,grupo)
 write.csv2(dat, file="ejemploanova1F2.csv")
 library(xtable)
-a=xtable(a,caption="Datos del ejemplo 1")
+a=xtable(a,caption="Datos del ejemplo 2.1")
 print(a,comment = F)
 ```
 
 
-```{r,echo = FALSE,fig.cap = 'Datos ejemplo 1'}
+```{r,echo = FALSE,fig.cap = 'Datos ejemplo 2.1'}
 plot(aciertos~grupo, col=c("green","red","orange"),horizontal=T,
 main="Figura ejemplo 1" ,xlab="Grupos",ylab= "Aciertos")
 ```
@@ -82,7 +82,7 @@ main="Figura ejemplo 1" ,xlab="Grupos",ylab= "Aciertos")
 ```{r, anova1F, echo = F,results = 'asis'}
 b <- anova(lm(aciertos~grupo)) 
 library(xtable)
-b=xtable(b,caption="Resultados del ejemplo 1")
+b=xtable(b,caption="Resultados del ejemplo 2.1")
 print(b,comment = F)
 
 ```
@@ -95,19 +95,19 @@ $$
 
 $Y_{ij}$ es cada una de las puntuaciones. Así, por ejemplo, $Y_{1A}$ será el valor del sujeto 1 en el grupo de los sanos $Y_{1A}$ = 30. Asimismo, $Y_{1B}$ será la puntuación del primer sujeto del grupo astrocitoma ($Y_{1B}$ = 16). $\mu_i$ será la media del grupo. Por tanto, $\mu_1$ será para el grupo de los individuos sanos  `r  mean(aciertos[1:5])`. Para el grupo astrocitoma será `r  mean(aciertos[6:10])`. Por último, para el grupo meduloblastoma tendremos `r mean(aciertos[11:15])`; $\epsilon_{ij}$ es un valor específico para cada individuo. Es la diferencia entre la puntuación predicha por el modelo y la puntuación obtenida por el individuo. Así, para el sujeto 1 del grupo sano la puntuación predicha será  $Y_{1Apred}$ =  25 y su error $\epsilon_{ij}$ = 30 - 25 = 5. 
 
-Otra forma de plantear este modelo es descomponiendo la puntuación de los sujetos en dos elementos: 1) la variabilidad explicada por el modelo y 2) la variabilidad no explicada por el modelo (error). De este modo, la predicción el modelo (media del grupo) puede descomponerse en dos componentes (media total + diferencia de la media del grupo con respecto a la media total):
+Otra forma de plantear este modelo es descomponiendo la puntuación de los sujetos en dos elementos: 1) la variabilidad explicada por el modelo y 2) la variabilidad no explicada por el modelo (error). De este modo, la predicción del modelo (media del grupo) puede descomponerse en dos elementos (media total + diferencia de la media del grupo con respecto a la media total):
 
 $$
-Y_{ij} = \mu_{..} + (\mu_j - \mu_{..}) + \epsilon_i
+Y_{ij} = \mu_{..} + (\mu_j - \mu_{..}) + \epsilon_{ij}
 $$
 
-donde $\mu_{..}$ es la media de todas las puntuaciones, $(\mu_j - \mu_{..})$ es la diferencia de la media del grupo y la media total y $\epsilon_i$ es el error. En el caso de la primera puntuación del grupo sano sería:
+\noindent donde $\mu_{..}$ es la media de todas las puntuaciones; $(\mu_j - \mu_{..})$ es la diferencia de la media del grupo y la media total y $\epsilon_{ij}$ es el error. En el caso de la primera puntuación del grupo sano sería:
 
               30 = `r mean(aciertos)` + `r mean(aciertos[1:5]) - mean(aciertos)`+ `r 30 - mean(aciertos[1:5])` 
         
 ## Comprobación de los supuestos
 
-Es necesario determinar si las muestras son independientes. Esto se asume siempre y cuando hayan sido extraídas al azar [^2.2]. Asimismo, se necesita determinar sin las muestras proceden de una población normal con la misma varianza. Asimismo, tendremos que comprobar que la distribución de los errores sigue una ley normal. 
+Es necesario determinar si las muestras son independientes. Esto se asume siempre y cuando hayan sido extraídas al azar [^2.2]. Asimismo, se necesita determinar si las muestras proceden de una población normal con la misma varianza. Asimismo, tendremos que comprobar que la distribución de los errores sigue una ley normal. 
 
 [^2.2]: @ato2 proponen utilizar el test de Durbin-Watson para comprobar la independencia de los residuales del modelo.
 
@@ -163,9 +163,9 @@ $$
 \hat{\omega}^{2} = \frac{(J - 1)(MCA-MCE)}{(J - 1)MCA + (N - J+ 1)MCE}
 $$
 
-Los valores 0.01, 0.06 y 0.14 representan tamaños de efecto bajo, medio y grande respectivamente para ambas medidas. Si el valor de $\omega^{2}$ es menor de 0 consideramos, por convención que su valor es cero.
+Los valores 0.01, 0.06 y 0.14 representan tamaños de efecto bajo, medio y grande respectivamente para ambas medidas. Si el valor de $\omega^{2}$ es menor de 0 consideramos, por convención, que su valor es cero.
 
-Aplicado a los datos del ejemplo 1 tenemos:
+Aplicado a los datos del ejemplo 2.1 tenemos:
 
 $$
 \hat{\eta}^{2} =  \frac{(J - 1)MCA}{(J - 1) MCA + (N - J)MCE} =
@@ -208,7 +208,7 @@ $$
 \alpha_{CS} = 1 - (1 - \alpha)^{1/k}  
 $$
 
-Aplicado a los datos del ejemplo 1 tenemos:
+Aplicado a los datos del ejemplo 2.1 tenemos:
 
 *Comparación del grupo A con el C:*
 
@@ -229,7 +229,7 @@ t.test(c,b,var.equal =T)
 ```
 
 
-Encontramos que sólo existen diferencias significativas entre el grupo A de los individuos sanos y el grupo C de los niños con el tumor de meduloblastoma. Como el nivel de riesgo es igual a 0,005, menor que el criterio de significación de Bonferroni (0.0167) concluimos que existen diferencias significativas entre ambos grupos. Aplicando el criterio de Sidak obtendríamos las mismas conclusiones en este caso: 
+Encontramos que sólo existen diferencias significativas entre el grupo A de los individuos sanos y el grupo C de los niños con el tumor de meduloblastoma. Como el nivel de riesgo es igual a 0,005, menor que el criterio de significación de Bonferroni (0.0167), concluimos que existen diferencias significativas entre ambos grupos. Aplicando el criterio de Sidak obtendríamos las mismas conclusiones en este caso: 
 
 $$
 \alpha_{CS} = 1 - (1 - \alpha)^{1/k}  = 1 - (1 - 0,05)^{1/3} = 0.01695
@@ -243,7 +243,7 @@ $$
 DMS_{Tukey} = q_{J,N-J; 1- \alpha_{F}}\sqrt{MCE/n}
 $$
 
-\noindent donde *q* es el cuantil de la distribución del rango estudentizado que corresponde a un nivel de significación $\alpha_F$ con *J* medias y *N - J* grados  de libertad. Aplicado al ejemplo 1 los resultados serían los siguientes:
+\noindent donde *q* es el cuantil de la distribución del rango estudentizado que corresponde a un nivel de significación $\alpha_F$ con *J* medias y *N - J* grados  de libertad. Aplicado al ejemplo 2.1 los resultados serían los siguientes:
 
 
 ```{r,tuey, echo = F,results = 'markup'}
@@ -273,8 +273,7 @@ los grupos A y C.
 
 ## Comparaciones de tendencia
 
-Cuando la variable factor (VI) del estudio admite la ordenación, se pueden realizar las denominadas comparaciones de tendencia que nos indica el tipo de relación existente entre las variables.
-Pueden compararse tantas tendencias como número de niveles de factor menos 1 (*J* - 1). La tendencia más básica es la lineal que supone incrementos (o decrementos) constantes en los distintos valores del factor. Sin embargo, también es posible encontrar tendencias de tipo cuadrático, cúbico, etc. En la siguiente figura se muestran algunas de estas posibilidades.
+Cuando la variable factor (VI) del estudio admite la ordenación, se pueden realizar las denominadas comparaciones de tendencia que nos indica el tipo de relación existente entre las variables. Pueden compararse tantas tendencias como número de niveles de factor menos 1 (*J* - 1). La tendencia más básica es la lineal que supone incrementos (o decrementos) constantes en los distintos valores del factor. Sin embargo, también es posible encontrar tendencias de tipo cuadrático, cúbico, etc. En la siguiente figura se muestran algunas de estas posibilidades.
 
 
 
@@ -282,7 +281,7 @@ Pueden compararse tantas tendencias como número de niveles de factor menos 1 (*
 knitr::include_graphics("figurasR/trend_plot.png")
 ```
 
-Para determinar la existencia de una determinada tendencia es necesario realizar comparaciones entre las medias de los niveles del factor. Estas medias se multiplican por una serie de coeficientes que varían dependiendo de la tendencia queremos contrastar y de los niveles que presenta el factor. Así, por ejemplo, si la VI tiene 3 niveles los coeficientes para las tendencias lineal y cuadrática podrían ser:
+Para determinar la existencia de una tendencia es necesario realizar comparaciones entre las medias de los niveles del factor. Estas medias se multiplican por una serie de coeficientes que varían dependiendo de la tendencia que queremos contrastar y de los niveles que presenta el factor. Así, por ejemplo, si la VI tiene 3 niveles los coeficientes para las tendencias lineal y cuadrática podrían ser:
 
 $$
   \psi_{lineal} = (-1)\mu_1 + 0\mu2 + (1)\mu_3
@@ -310,7 +309,7 @@ $$
 F_{BF} = \frac{\sum n_j(\bar{Y}_j - \bar{Y})^2}{\sum (S_{j}^2 - n_jS_{j}^2/N)}
 $$
 
-Este estadístico se distribuye según el modelo de probabilidad F con *J-1* y *gl* grados de libertad. Y *gl* se obtiene mediante:
+Este estadístico se distribuye según el modelo de probabilidad F con *J-1* y *gl* grados de libertad. Y *gl* se obtiene mediante la siguiente expresión:
 
 $$
 gl = \frac{1}{\sum k_{j}^2/(n_j - 1)} \;\; con \;
@@ -318,7 +317,7 @@ k_{j}^2 = \frac{S_{j}^2 - n_jS_{j}^2/N}{\sum (S_{j}^2 - n_jS_{j}^2/N)}
 $$
 
 
-La propuesta de Welch es otra alternativa cuando no se cumple el supuesto de homogeneidad de varianzas. Su expresion es:
+La propuesta de Welch es otra alternativa cuando no se cumple el supuesto de homogeneidad de varianzas. Su fórmula es:
 
 
 $$
@@ -364,7 +363,7 @@ Esta prueba no necesita que se cumplan los supuestos de normalidad y homogeneida
 
 
 
-```{r, echo=FALSE,fig.cap= "Prueba de Kruskall-Wallis",out.width="70%"}
+```{r, echo=FALSE,fig.cap= "Esquema del diseño para la prueba de Kruskall-Wallis",out.width="70%"}
 knitr::include_graphics("figurasR/kw1c.png")
 ```
 
@@ -377,7 +376,7 @@ $$
 
 Bajo la hipótesis nula de que las *J* poblaciones tienen la misma forma, el estadístico H se distribuye según un modelo de probabilidad *ji-cuadrado* con *J - 1* grados de libertad. El rechazo de esta  hipótesis supone que los *J* promedios comparados no son iguales.
 
-*Ejemplo 2:*
+*Ejemplo 2.2:*
 
 Supongamos que estamos interesados en el estudio de los 3 métodos de enseñanza para mejorar el rendimiento de los escolares. Los resultados fueron los siguientes:
 
@@ -390,14 +389,18 @@ metodo2 = c(1,1,1,1,1,2,2,2,2,2,3,3,3,3,3)
 a= matrix(aciertos2,5,3,dimnames= list(c("s1","s2","s3","s4","s5"),c("A","B","C")))
 dat<- data.frame(aciertos2,grupo)
 library(xtable)
-a=xtable(a,caption="Datos del ejemplo 2")
-print(a,comment = F)
+# a=xtable(a,caption="Datos del ejemplo 2.2")
+# print(a,comment = F)
+knitr::kable(a,caption="Datos del ejemplo 2.2")
 ```
 
 
 ```{r,echo = FALSE}
-plot(aciertos2~grupo, col=c("green","red","orange"),horizontal=T,
-main="Figura ejemplo 2" ,xlab="Método", ylab= "Rendimiento")
+# library(ggplot2)
+# ggplot(dat,aes(x = grupo, y = aciertos2))+
+#   geom_boxplot(colors=grupo)
+  
+plot(aciertos2~grupo, col=c("green","red","orange"),horizontal=T,xlab="Método", ylab= "Rendimiento",main = "Figura del ejemplo 2.2")
 ```
 
 Observamos que los grupos son bastante asimétricos. En particular, se tiene que el grupo B muestra una distribución muy alejada de la normalidad. Esto puede comprobarse mediante el estadístico de Shapiro-Wilks:
@@ -420,20 +423,21 @@ shapiro.test(aciertos2[11:15])
 En este caso es adecuado aplicar el estadístico de Kruskal- Wallis.
 
 
-```{r,echo = FALSE,results = 'asis'}
-library(misty)
+```{r,echo = FALSE,results = 'asis',message=FALSE}
+#library(misty)
 kruskal.test(aciertos2~grupo)
 
 b <- rank(aciertos2,ties.method = 'average')
 a= matrix(b,5,3,dimnames= list(c("s1","s2","s3","s4","s5"),c("A","B","C")))
 dat<- data.frame(aciertos,aciertos2,b,grupo)
-write.sav(dat,"dat_kw.sav")
+#write.sav(dat,"dat_kw.sav")
 library(xtable)
-a=xtable(a,caption="Rangos del ejemplo 2")
-print(a,comment = F)
+# a=xtable(a,caption="Rangos del ejemplo 2.2")
+# print(a,comment = F)
+knitr::kable(a,caption="Rangos del ejemplo 2.2")
 ```
 
-En el cuadro 5 aparece el rango para cada una de las puntuaciones. Calculando las medias de los rangos de cada uno de los grupos observamos que las menores puntuaciones están en el grupo C seguido del grupo B:
+En la tabla 2.5 aparece el rango para cada una de las puntuaciones. Calculando las medias de los rangos de cada uno de los grupos observamos que las menores puntuaciones están en el grupo C seguido del grupo B:
 
 *Media del grupo A:*
 
@@ -455,7 +459,7 @@ mean(b[6:10])
 mean(b[11:15])
 ```
 
-Al igual que en el caso del ANOVA, para conocer cuáles son las diferencias significativas entre los grupo será necesario realizar una prueba *post-hoc*.
+Al igual que en el caso del ANOVA, para conocer cuáles son las diferencias significativas entre los grupos será necesario realizar una prueba *post-hoc*.
 
 ### Comparaciones a posteriori
 
@@ -468,7 +472,7 @@ Sean dos muestras aleatorias de tamaño $n_1$ y $n_2$. Sea $R_{i}$ el rango asig
 $$
 S_1 = \sum_{i=1}^{n_1}R_{i1} \qquad y \qquad S_2 = \sum_{i=1}^{n_2}R_{i2} 
 $$
-Como la suma de los N rangos vale N(N+1)/2 se verifica que:
+Se verifica que la suma de los N rangos vale [@pardo]:
 
 $$
 S_1 + S_2 = \frac{N(N+1)}{2} 
@@ -476,7 +480,7 @@ $$
 
 Si se asume que las dos muestras proceden de la misma población cabe esperar que $S_1$ y $S_2$ sean iguales o parecidos y que solo muestren pequeñas variaciones debidas al azar. Por tanto, el estadístico U sería cualquiera de los dos sumandos. Por ejemplo, U = $S_1$. 
 
-Una vez determinado el estadístico, el paso siguiente es determinar su distribución de probabilidad. Esta distribución no es muy complicada en el caso de que tengamos pocos valores y podremos calcular el valor de probabilidad exacto. Cuando el número de valores es relativamente grande será necesario realizar la siguiente aproximación:
+Una vez definido el estadístico, el paso siguiente es determinar su distribución de probabilidad. Esta distribución no es muy complicada en el caso de que tengamos pocos valores y podremos calcular el valor de probabilidad exacto. Cuando el número de valores es relativamente grande será necesario realizar la siguiente aproximación:
 
 $$
 Z = \frac{U - \mu_U}{\sigma_U} \qquad donde \qquad \mu_U = \frac{n_1(N+1)}{2} \qquad y \qquad  \sigma_U = \sqrt{n_1n_2(N+1)/12}
@@ -486,36 +490,36 @@ $$
 En el ejemplo que se estudió cuando se introdujo la técnicas KW encontramos que había diferencias significativas por lo que será necesario determinar las diferencias entre los  distintos métodos de enseñanza. Necesitamos determinar que métodos son los que muestran diferencias significativas:
 
 *Prueba de U de Mann-whitney para métodos A y B:*
-```{r,echo= FALSE}
+```{r,echo= FALSE,warning=FALSE,message=FALSE}
 wilcox.test(b[1:5],b[6:10],paired = F)
 ```
 
 *Tamaño del efecto para métodos A y B:*
-```{r,echo= FALSE}
+```{r,echo= FALSE,warning=FALSE,message=FALSE}
 library(effsize)
 cliff.delta(b[1:5],b[6:10],return.dm = T)
 ```
 
 
 *Prueba de U de Mann-whitney para métodos A y C:*
-```{r,echo= FALSE}
+```{r,echo= FALSE,warning=FALSE,message=FALSE}
 wilcox.test(b[1:5],b[11:15],paired = F)
 ```
 
 *Tamaño del efecto para métodos A y C:*
-```{r,echo= FALSE}
+```{r,echo= FALSE,warning=FALSE,message=FALSE}
 library(effsize)
 cliff.delta(b[1:5],b[11:15],return.dm = T)
 ```
 
 
 *Prueba de U de Mann-whitney para métodos B y C:*
-```{r,echo= FALSE}
+```{r,echo= FALSE,warning=FALSE,message=FALSE}
 wilcox.test(b[6:10],b[11:15],paired = F)
 ```
 
 *Tamaño del efecto para métodos B y C:*
-```{r,echo= FALSE}
+```{r,echo= FALSE,warning=FALSE,message=FALSE}
 library(effsize)
 cliff.delta(b[6:10],b[11:15],return.dm = T)
 ```
@@ -523,7 +527,7 @@ cliff.delta(b[6:10],b[11:15],return.dm = T)
 
 Si consideramos un criterio de significación $\alpha$ = 0,05 tenemos que corregir el azar debido a que hemos realizado más de un test. Aplicando el criterio de Bonferroni ($\alpha_C$ = 0,05/3 = 0.0167) concluimos que no hay ninguna diferencia significativa. La misma conclusión obtendríamos si aplicáramos la corrección de Sidak ($\alpha_C$ = 0,017).
 
-El problema de utilizar la prueba de U de Mann-Whitney para realizar las comparaciones a posteriori es que no se mantienen los rangos del conjunto de observaciones, produciéndose un reajuste de los rangos en cada una de las comparaciones dos a dos. Existen varias alternativas a este procedimiento como la prueba de Dunn, la de Conover, el test de Nemenyi o la prueba de Dwass-Steel-Critchlow-Fligner (DSCF). En el programa de JAMOVI las comparaciones a posteriori se realizan mediante la prueba de (DSCF). Se considera que un contraste es significativo si satisface:
+El problema de utilizar la prueba de U de Mann-Whitney para realizar las comparaciones a posteriori es que no se mantienen los rangos del conjunto de observaciones, produciéndose un reajuste de los rangos en cada una de las comparaciones dos a dos. Existen varias alternativas a este procedimiento como la prueba de Dunn, la de Conover, el test de Nemenyi o la prueba de Dwass-Steel-Critchlow-Fligner (DSCF). En el programa de JAMOVI las comparaciones a posteriori se realizan mediante la prueba de DSCF. Se considera que un contraste es significativo si satisface:
 
 $$
 W_j = -\frac{n_i(ni+n_j+1)}{2}/\frac{n_in_j}{24}\times \Lambda > q_{\alpha,k}, \quad \text{para} \quad 1\leq i\leq j\leq k
@@ -629,7 +633,7 @@ knitr::include_graphics("figurasR/anova1f5_spss.png")
 knitr::include_graphics("figurasR/anova1f2_spss.png")
 ```
 
-\noindent Pulsando el botón de *Opciones* podemos acceder a los descriptivos, a la prueba de homogeneidad de varianzas y a las pruebas de Brown_Forsythe y Welch.
+\noindent Pulsando el botón de *Opciones* podemos acceder a los descriptivos, a la prueba de homogeneidad de varianzas y a las pruebas de Brown-Forsythe y Welch.
 
 
 ```{r, echo=FALSE,fig.cap= "Botón de opciones de ANOVA de un factor en SPSS",out.width="60%"}
