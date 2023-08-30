@@ -218,7 +218,7 @@ pbinom(7,10,1/3)
 Dado que él área de una distribución teórica vale 1 sabemos que 1 - $\alpha$ es la probabilidad asociada a la región de confianza. O lo que es lo mismo, la probabilidad de aceptar $H_0$ cuando es cierta. Del mismo modo, 1 - $\beta$ es la probabilidad de rechazar $H_0$ cuando es falsa. A esta probabilidad se le llama **potencia de la prueba**. 
 
 
-```{r, echo=FALSE,fig.cap= "Errores en la inferencia estadística",out.width="60%",warning=FALSE,message=FALSE}
+```{r, echo=FALSE,fig.cap= "Errores en la inferencia estadística",out.width="60%",warning=FALSE,message=FALSE,fig.aling = "center"}
 knitr::include_graphics("figurasR/potencia.png")
 ```
 
