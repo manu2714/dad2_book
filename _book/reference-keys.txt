@@ -258,3 +258,9 @@ referencias
 tab:unnamed-chunk-1
 fig:unnamed-chunk-8
 fig:unnamed-chunk-12
+fig:unnamed-chunk-1
+fig:unnamed-chunk-2
+fig:unnamed-chunk-10
+tab:unnamed-chunk-15
+tab:Ej1
+tab:anova1F
