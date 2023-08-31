@@ -25,7 +25,10 @@ fig:unnamed-chunk-34
 fig:unnamed-chunk-35
 fig:unnamed-chunk-36
 fig:unnamed-chunk-37
+tab:Ej1
 fig:unnamed-chunk-38
+tab:anova1F
+tab:unnamed-chunk-42
 fig:unnamed-chunk-45
 fig:unnamed-chunk-46
 tab:Ej2
@@ -255,12 +258,3 @@ selección-de-modelos-en-el-programa-spss
 procedimiento-de-pasos-sucesivos
 modelos-de-moderación-y-mediación-con-el-módulo-de-process-hayes
 referencias
-tab:unnamed-chunk-1
-fig:unnamed-chunk-8
-fig:unnamed-chunk-12
-fig:unnamed-chunk-1
-fig:unnamed-chunk-2
-fig:unnamed-chunk-10
-tab:unnamed-chunk-15
-tab:Ej1
-tab:anova1F

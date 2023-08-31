@@ -76,8 +76,7 @@ knitr::kable(a,caption ="Datos del ejemplo 2.1")
 
 
 ```{r,echo = FALSE,fig.cap = 'Boxplot de los resultados del ejemplo 2.1',fig.align='center'}
-plot(aciertos~grupo, col=c("green","red","orange"),horizontal=T,
-main="Figura ejemplo 1" ,xlab="Grupos",ylab= "Aciertos")
+plot(aciertos~grupo, col=c("green","red","orange"),horizontal=T,xlab="Grupos",ylab= "Aciertos")
 ```
 
 
@@ -108,6 +107,7 @@ $$
 
               30 = `r mean(aciertos)` + `r mean(aciertos[1:5]) - mean(aciertos)`+ `r 30 - mean(aciertos[1:5])` 
         
+
 ## Comprobación de los supuestos
 
 Es necesario determinar si las muestras son independientes. Esto se asume siempre y cuando hayan sido extraídas al azar [^2.2]. Asimismo, se necesita determinar si las muestras proceden de una población normal con la misma varianza. También tendremos que comprobar que la distribución de los errores sigue una ley normal. 
@@ -131,13 +131,16 @@ shapiro.test(aciertos[6:10])
 shapiro.test(aciertos[11:15])
 ```
 
+\newpage
+
 **Prueba de homogeneidad de varianzas:**
 
-```{r, echo=FALSE,results = 'asis'}
+```{r, echo=FALSE,results = 'asis',message=FALSE}
 library(car)
 c <- leveneTest(aciertos~grupo)
-b=xtable(c,caption="Prueba de Levene del ejemplo 1")
+b=xtable(c,caption="Prueba de Levene del ejemplo 2.1")
 print(b,comment = F)
+knitr::kable(c, caption= "Prueba de Levene del ejemplo 2.1")
 ```
 
 ## Tamaño del efecto
