@@ -313,7 +313,7 @@ Cuando la variable no cumple el supuesto de normalidad o la VD está medida de m
 La hipótesis nula que se contrasta es que las respuestas asociadas a cada uno de los "tratamientos" tienen la misma distribución de probabilidad o distribuciones con la misma mediana, frente a la hipótesis alternativa de que por lo menos la distribución de una de las respuestas difiere de las demás. Rechazar ésta hipótesis implica que los centros de la distribución proceden de poblaciones distintas. Para contrastar esta hipótesis hay que transformar las puntuaciones de cada individuo en puntuaciones ordenadas (rangos). Si hay empates las puntuaciones se sustituyen por el rango medio. 
 
 
-# Ejemplo de diseño unifactorial de medidas repetidas
+### Ejemplo de diseño unifactorial de medidas repetidas no paramétrico
 
 
 Si aplicamos esta técnica a los datos del ejemplo 1:
