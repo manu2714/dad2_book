@@ -1,9 +1,9 @@
 
 # Diseños factoriales (I): Diseño factorial completamente aleatorizado (A2FCA)
 
-En este tema vamos a estudiar los diseños factoriales. A diferencia de los diseños anteriores donde estudiábamos el efecto de una VI categórica (*factor*) sobre una VD cuantitativa, aquí estudiaremos el efecto de 2 o más variables categóricas sobre una VD. En este primer tema nos centraremos en los diseños factoriales que utilizan una estrategia entresujetos en la que se crean grupos a los que se les asigna una condición del diseño experimental. La principal ventaja de estos diseños es que nos permite conocer el efecto conjunto de los dos factores ( \emph{\textcolor{red}{interacción}}). Desde el punto de vista formal, el concepto de *interacción* entre dos factores hace referencia a que el efecto de uno de ellos sobre la VD no es el mismo en todos los niveles del otro factor. 
+En este tema vamos a estudiar los diseños factoriales. A diferencia de los diseños anteriores donde estudiábamos el efecto de una VI categórica (*factor*) sobre una VD cuantitativa, aquí estudiaremos el efecto de 2 o más variables categóricas sobre una VD. En este primer tema nos centraremos en los diseños factoriales que utilizan una estrategia entresujetos en la que se crean grupos a los que se les asigna una condición del diseño experimental. La principal ventaja de estos diseños es que nos permite conocer el efecto conjunto de los dos factores ( ***interacción***). Desde el punto de vista formal, el concepto de *interacción* entre dos factores hace referencia a que el efecto de uno de ellos sobre la VD no es el mismo en todos los niveles del otro factor. 
 
-Para facilitar la comprensión de este tipo de diseños nos centraremos en los diseños con dos factores. En el caso de que tuviéramos un diseño con dos variables A y B con 2 y 3 valores respectivamente,(diseño factorial 2x3). Por ejemplo, supongamos que queremos estudiar el efecto de la dieta (factor A, $a_1$ = Dieta A, $a_2$ = Dieta B) y las horas de sueño (factor B, $b_1$ = 2 horas, $b_2$ = 4 horas, $b_3$ = 6 horas) en la actividad motora de una grupo de ratas. Las condiciones serían las siguientes:
+Para facilitar la comprensión de este tipo de diseños nos centraremos en los diseños con dos factores con dos variables A y B con 2 y 3 valores respectivamente,(diseño factorial 2x3). Por ejemplo, supongamos que queremos estudiar el efecto de la dieta (factor A, $a_1$ = Dieta A, $a_2$ = Dieta B) y las horas de sueño (factor B, $b_1$ = 2 horas, $b_2$ = 4 horas, $b_3$ = 6 horas) en la actividad motora de una grupo de ratas. Las condiciones serían las siguientes:
 
 
 ```{r, echo=FALSE,fig.cap= "Condiciones de un diseño factorial 2x3",fig.align= "center", out.width="500px"}
@@ -12,8 +12,6 @@ knitr::include_graphics("figurasR/condFactorial.png")
 
 
 Mediante este diseño podemos conocer como afecta la dieta a la actividad motora ($a_{1+}$ - $a_{2+}$). Asimismo, este diseño también nos permite conocer el efecto de las horas de sueño sobre la actividad motora comparando los distintos niveles de la variable B (por ejemplo, comparando $b_{1+}$ - $b_{2+}$). Sin embargo, la principal ventaja es que también podemos conocer cómo afecta la dieta dependiendo del nivel que está presente de B (**efecto de interacción**). Esto se puede hacer por ejemplo comparando $a_1b_1$ - $a_2b_1$. En este caso, tendríamos la comparación que estudia el efecto de la dieta sobre la actividad motora cuando los animales sólo habían dormido dos horas. De la misma forma, podría conocerse el efecto de la dieta cuando los animales durmieron 4 o 6 horas.  
-
-Otra ventaja que presentan este diseños es que se necesita un menor número de sujetos en comparación con los diseños completamente aleatorizados. En el caso del ejemplo mencionado anteriormente. Supongamos que tenemos 10 sujetos por condición. En total tendríamos 60 sujetos. Si quisiéramos estudiar por separado cada uno de los factores utilizando dos diseños completamente aleatorizados (uno para cada VI), tendríamos que duplicar el número de sujetos por grupo por lo que necesitaríamos 120 sujetos para obtener menos información que con el diseño factorial, ya que no conoceríamos las interrelaciones entre los dos factores. 
 
 
 ## Modelo estadístico
@@ -129,7 +127,7 @@ $$
 \alpha\beta_{jk}= \mu_{jk} - (\mu_{++} + \alpha_{j} + \beta_k)
 $$
 
-Existe interacción cuando $\alpha\beta_{jk} \neq$ 0 para algún *j* ó *k*. @pardo consideran que esta expresión puede interpretarse de dos formas:
+Existe interacción cuando $\alpha\beta_{jk} \neq$ 0 para algún *jk*. @pardo consideran que esta expresión puede interpretarse de dos formas:
 
 1. Como *desviación que experimentan las medias de las casillas con respecto a los efectos principales de los factores*: 
 
@@ -165,14 +163,14 @@ knitr::include_graphics("figurasR/fact_simu.png")
 Supongamos que estamos interesados en estudiar si el efecto de la dieta ($a_1$ = Dieta A, $a_2$ = Dieta B) sobre la actividad motora depende de las horas de sueño $b_1$ = 2 horas, $b_2$ = 4 horas y $b_3$ = 6 horas). Los resultados de los sujetos aparecen a continuación:
 
 
-```{r, echo=FALSE,fig.cap= "Representación gráfica del ejemplo 3.1",out.width="70%",fig.align='center'}
+```{r, echo=FALSE,fig.cap= "Datos del ejemplo 4.1",out.width="70%",fig.align='center'}
 knitr::include_graphics("figurasR/ejemplo31.png")
 ```
 
 \newpage
 
 
-Analizando estos datos nos encontramos que existe un efecto interactivo entre la variable tipo de dieta y horas de sueño (ver Cuadro 2). Asimismo, podemos comprobar mediante el estadístico de Levene que se cumple el supuesto de homogeneidad (ver tabla 4.5). 
+Analizando estos datos nos encontramos que existe un efecto interactivo entre la variable tipo de dieta y horas de sueño (ver tabla 4.1). Asimismo, podemos comprobar mediante el estadístico de Levene que se cumple el supuesto de homogeneidad (ver tabla 4.2). 
 
 ```{r,echo = FALSE,results='asis',warning=FALSE,message=FALSE}
 library(xtable)
@@ -185,15 +183,21 @@ ta<- xtable(mod,caption= "Resultados del ejemplo 4.1")
 #print(ta, comment = F)
 vi <- gl(6,5,30)
 levene<- leveneTest(datos$vd~vi)
-ta2<- xtable(levene,caption= "Prueba de Levene del ejemplo 3.1")
+ta2<- xtable(levene,caption= "Prueba de Levene del ejemplo 4.1")
 #print(ta2, comment = F)
+
+knitr:: kable(round(mod,2), caption = "Resultados del ejemplo 4.1")
+
+
 
 ```
 
 
+```{r,echo = FALSE,results='asis',warning=FALSE,message=FALSE}
 
-```{r, echo=FALSE,fig.cap= "Resultados ANOVA y prueba de Levene",out.width="450px",fig.align='center'}
-knitr::include_graphics("figurasR/anovaLevene.png")
+knitr:: kable(round(levene,2), caption = "Prueba de Levene del ejemplo 4.1")
+#knitr::include_graphics("figurasR/anovaLevene.png")
+
 ```
 
 
@@ -202,7 +206,7 @@ En la siguiente figura observamos que el efecto de la dieta sobre la actividad m
 
 
 
-```{r, echo=FALSE,fig.cap= "Representación gráfica del ejemplo 3.1",out.width="70%",fig.align='center'}
+```{r, echo=FALSE,fig.cap= "Representación gráfica del ejemplo 4.1",out.width="70%",fig.align='center'}
 knitr::include_graphics("figurasR/fact_ejemplo31_jamovi.png")
 ```
 
@@ -212,8 +216,15 @@ knitr::include_graphics("figurasR/fact_ejemplo31_jamovi.png")
 Una vez que se constata la existencia de interacción en el diseño, el paso siguiente consiste en interpretar la interacción mediante la comparación de los efectos simples. Un efecto simple calcula la diferencia de dos valores de la VD en presencia de dos valores distintos de la VI, manteniendo constante el valor de una  tercera. Consideremos los valores medios de nuestro ejemplo 1: 
 
 
-```{r, echo=FALSE,fig.cap= "Medias del ejemplo 3.1",out.width="400px",fig.align='center'}
-knitr::include_graphics("figurasR/MediasEjemplo3-1.png")
+```{r,tab42, echo=FALSE}
+library(tidyr)
+library(kableExtra)
+#knitr::include_graphics("figurasR/MediasEjemplo3-1.png")
+medias<- c(6.6,11,6.6,6.4,7,7)
+# tab42<- matrix(medias,1,6,byrow=T, dimnames= list(c("Medias"),c("$\overline{X}_{a_1b_1}$","$\overline{X}_{a_2b_1}$","$\overline{X}_{a_1b_2}$", "$\overline{X}_{a_2b_2}$", "$\overline{X}_{a_1b_3}$", "$\overline{X}_{a_2b_3}$")))
+tab42<- matrix(medias,1,6,byrow=T, dimnames= list(c("Medias"),c("$a_1b_1$","$a_2b_1$","$a_1b_2$", "$a_2b_2$", "$a_1b_3$", "$a_2b_3$")))
+tab42b<- knitr:: kable(tab42, "html",caption = "Medias de las condiciones del ejemplo 4.1")
+kableExtra:: row_spec(tab42b,0,bold = T)
 ```
 
 
@@ -223,19 +234,19 @@ knitr::include_graphics("figurasR/MediasEjemplo3-1.png")
 1. Comparar los valores medios de las dieta A con la dieta B cuando los animales durmieron 2 horas:
 
 $$
-Efecto \; simple \; de \; A =  \mu_{a_1b_1}- \mu_{a_2b_1} = 6.6 - 6.4 = 0.2
+Efecto \; simple \; de \; A =  \overline{X}_{a_1b_1}- \overline{X}_{a_2b_1} = 6.6 - 6.4 = 0.2
 $$
 
 2. Comparar los valores medios de las dieta A con la dieta B cuando los animales durmieron 4 horas:
 
 $$
-Efecto \; simple \; de \; A =  \mu_{a_1b_2}- \mu_{a_2b_2} = 11 - 7 = 4
+Efecto \; simple \; de \; A =  \overline{X}_{a_1b_2} - \overline{X}_{a_2b_2} = 11 - 7 = 4
 $$
 
 3. Comparar los valores medios de las dieta A con la dieta B cuando los animales durmieron 6 horas:
 
 $$
-Efecto \; simple \; de \; A =  \mu_{a_1b_3}- \mu_{a_2b_3} = 6.6 - 7 = -0.4
+Efecto \; simple \; de \; A =  \overline{X}_{a_1b_3} - \overline{X}_{a_2b_3} = 6.6 - 7 = -0.4
 $$
 
 Para determinar el efecto de la interacción necesitamos comparar entre sí todos estos efectos simples. Así, en este diseño tendremos tres comparaciones:
@@ -243,30 +254,34 @@ Para determinar el efecto de la interacción necesitamos comparar entre sí todo
 1. Comparación del efecto simple de A (dieta) en $b_1$ (2 horas de sueño) con el efecto simple de A en $b_2$ (4 horas de sueño):
 
 $$
-\phi_1 = \mu_{a_1b_1}- \mu_{a_2b_1} - (\mu_{a_1b_2}- \mu_{a_2b_2}) = 6.6 - 6.4 - 11 + 7 = -3.8
+\phi_1 = \overline{X}_{a_1b_1}- \overline{X}_{a_2b_1} - (\overline{X}_{a_1b_2}- \overline{X}_{a_2b_2}) = 6.6 - 6.4 - 11 + 7 = -3.8
 $$
 
 2. Comparación del efecto simple de A (dieta) en $b_1$ (2 horas de sueño) con el efecto simple de A en $b_3$ (6 horas de sueño):
 
 $$
-\phi_2 = \mu_{a_1b_1}- \mu_{a_2b_1} - (\mu_{a_1b_3}- \mu_{a_2b_3}) = 6.6 - 6.4 - 6.6 + 7 = 0.6
+\phi_2 = \overline{X}_{a_1b_1} - \overline{X}_{a_2b_1} - (\overline{X}_{a_1b_3} - \overline{X}_{a_2b_3}) = 6.6 - 6.4 - 6.6 + 7 = 0.6
 $$
 
 
 3. Comparación del efecto simple de A (dieta) en $b_2$ (4 horas de sueño) con el efecto simple de A en $b_3$ (6 horas de sueño):
 
 $$
-\phi_1 = \mu_{a_1b_1}- mu_{a_2b_1} - (\mu_{a_1b_2}- mu_{a_2b_2}) = 11 - 7 - 6.6 + 7 = 4.4
+\phi_1 = \overline{X}_{a_1b_1} - \overline{X}_{a_2b_1} - (\overline{X}_{a_1b_2}- \overline{X}_{a_2b_2}) = 11 - 7 - 6.6 + 7 = 4.4
 $$
 
 Observamos que las diferencias se establecen cuando se comparan los efectos simples de A con el valor $b_2$ (4 horas de sueño). En los otros las diferencias son pequeñas. No obstante, debemos considerar si esas diferencias encontradas cuando se comparan dos efectos simples se deben al azar. La comparación de los contraste anteriores y la varianza del error permite obtener un estadístico *t* que se distribuye como una distribución *t* teórica con 24 grados de libertad. Una estimación de la varianza del error puede hacerse promediando las varianzas de las condiciones del diseño. En nuestro caso, sería:
 
 
-|  $\sigma_{a_1b_1}$   |  $\sigma_{a_2b_1}$ |$\sigma_{a_1b_2}$   |$\sigma_{a_2b_2}$   |$\sigma_{a_1b_3}$   |  $\sigma_{a_2b_3}$ |
-|---|---|---|---|---|---|
-|  1.95 | 1.82  | 2  |  1.87 | 1.95  | 1.87  |
+```{r, echo=FALSE}
+x<- c(1.95,1.82,2,1.87,1.95,1.87)
+tab43<- matrix(x,1,6,byrow=T, dimnames= list(c("valor"),c("$s_{a_1b_1}$","$s_{a_2b_1}$","$s_{a_1b_2}$", "$s_{a_2b_2}$", "$s_{a_1b_3}$", "$s_{a_2b_3}$")))
 
-Table: Desviaciones tipo de las condiciones del ejemplo 1
+tab43b<-knitr:: kable(tab43, caption = "Desviaciones tipo de las condiciones del ejemplo 4.1")
+kableExtra::row_spec(tab43b,row =0, bold = T)
+
+```
+
 
 $$
 Var_{error} = \frac{1.95+1.82+2+1.87+1.95+1.87}{6} = 1.91
@@ -299,15 +314,15 @@ $$
 
 ### Ejemplo 2 de diseño factorial
 
-Supongamos que estamos interesados en estudiar si la memoria de trabajo de escolares se veía afectada por las variables edad y cantidad de zonas verdes próximas al centro educativo. Los resultados de los primeros niños estudiados se muestran a continuación: Para realizar el análisis de los datos debemos asegurarnos de que se cumplen los supuestos de la prueba (normalidad y homogeneidad de las varianzas).En la siguiente figura se representan los datos por condición del estudio. 
+Supongamos que estamos interesados en estudiar si la memoria de trabajo de escolares se veía afectada por las variables edad y cantidad de zonas verdes próximas al centro educativo. Para realizar el análisis de los datos debemos asegurarnos de que se cumplen los supuestos de la prueba (normalidad y homogeneidad de las varianzas). En la siguiente figura se representan los datos por condición del estudio.
 
 
-```{r, echo=FALSE,fig.cap= "Boxplot del ejemplo 2",out.width="300px",fig.align='center'}
+```{r, echo=FALSE,fig.cap= "Boxplot del ejemplo 2",out.width="400px",fig.align='center'}
 knitr::include_graphics("figurasR/boxplot_ejemplo2.png")
 ```
 
 
-Realizando el análisis de la varianza observamos que la interacción no resulta significativa, siendo la edad el único factor significativo. Por tanto, en este diseño lo único que hay que hacer es determinar si existen diferencias significativas entre las distintas edades. Para ello hay que realizar algún procedimiento *post hoc* como el de Tukey.
+Realizando el análisis de la varianza observamos que la interacción no resulta significativa, siendo la edad el único factor significativo. Por tanto, en este diseño lo único que hay que hacer es determinar si existen diferencias significativas entre las distintas edades. Para ello hay que realizar algún procedimiento *post hoc* como el de Tukey. 
 
 \newpage
 
