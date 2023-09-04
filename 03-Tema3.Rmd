@@ -14,7 +14,7 @@ Supongamos que estamos interesados en presentar imágenes relacionadas con emoci
 Sin embargo, también cabe la posibilidad de seleccionar un único grupo y presentarle en momentos distintos cada una de las imágenes (alegría, tristeza y neutras). La ventaja de actuar así es que reduciríamos el número de sujetos presentes en el estudio con lo que se facilitaría el costo de la investigación. En cambio, tendríamos la dificultad de que las observaciones registradas en cada individuo no son independientes pudiéndose producir efectos de *secuenciación* que pueden ser de dos tipos generales: 1) efectos de *arrastre* como consecuencia de aplicar un tratamiento sin que haya desaparecido el efecto de otro aplicado previamente, y 2) *efectos de la práctica* resultado de la mejora de la respuesta de los sujetos como consecuencia de la repetición [@ato2; @pardo]. Una forma de eliminar estos efectos de secuenciación es mediante el ***contrabalanceo*** que consiste en administrar los tratamientos en orden distintos a cada participante en la investigación. Este contrabalanceo puede aplicarse aleatoriamente pudiendo ser completo o incompleto. Para profundizar en estos procedimientos es conveniente consultar alguna obra de metodología general [@Leon]. El árbol de decisión para estos ensayos aparece en la siguiente figura.
 
 
-```{r, echo=FALSE,fig.cap= "Árbol de decisión",fig.align='center',out.width="70%"}
+```{r, echo=FALSE,fig.cap= "Árbol de decisión del diseño univariable de medidas repetidas",fig.align='center',out.width="70%"}
 knitr::include_graphics("figurasR/anova1fmr2.png")
 ```
 
@@ -28,7 +28,7 @@ $$
 Y_{ij} = \mu + s_i + \alpha_{j} + \epsilon_i
 $$
 
-\noindent donde $Y_{ij}$ es la puntuación del sujeto *i* en la condición *j*, $\mu$ es la media total del diseño, $s_i$ son efectos aleatorios del individuo *i* ($s_i = \mu_i - \mu$) y se suponen distribuidos según una ley normal (NID(0,$\sigma^2$)), $\alpha_j = \mu_j - \mu$ son efectos fijos constantes para cada nivel de tratamiento independientemente de los sujetos, $\epsilon_i$ es $Y_{ij} - s_i-\alpha_{j}$ son efectos residuales aleatorios específicos para cada puntuación. En este modelo se asumen que las covarianzas entre los tratamientos y entre los individuos no existen.
+\noindent donde $Y_{ij}$ es la puntuación del sujeto *i* en la condición *j*; $\mu$ es la media total del diseño; $s_i$ son efectos aleatorios del individuo *i* ($s_i = \mu_i - \mu$) y se suponen distribuidos según una ley normal (NID(0,$\sigma^2$)), $\alpha_j = \mu_j - \mu$ son efectos fijos constantes para cada nivel de tratamiento independientemente de los sujetos; $\epsilon_i$ es $Y_{ij} - s_i-\alpha_{j}$ son efectos residuales aleatorios específicos para cada puntuación. En este modelo se asumen que las covarianzas entre los tratamientos y entre los individuos no existen.
 
 La hipótesis nula de este modelo es:
 
@@ -89,28 +89,36 @@ $$
 
 ## Ejemplo 1 de diseño unifactorial de medidas repetidas
 
-A continuación presentamos los resultados de un estudio en el que se quiso estudiar si el contenido emocional de una imagen provocaba cambios en una respuesta psicofisiológica:
+A continuación, presentamos los resultados de un estudio en el que se quiso estudiar si el contenido emocional de una imagen provocaba cambios en una respuesta psicofisiológica:
 
 
 ```{r,echo = FALSE,results = 'asis',message=FALSE,warning=FALSE}
 library(foreign)
 library(xtable)
 datos<- read.spss("data/ejemociones31-15.sav",to.data.frame = T)
-tabla<- xtable(datos, caption = "Datos del ejemplo 4.1")
-tab.cor<- cor(datos)
-tabla2 <- xtable(tab.cor, caption = "Correlaciones del ejemplo 4.1")
+tabla<- xtable(datos, caption = "Datos del ejemplo 3.1")
+tab.cor<- round(cor(datos),2)
+tabla2 <- xtable(tab.cor, caption = "Correlaciones del ejemplo 3.1")
 cor1 <- cor(datos$tristeza,datos$neutra)
 cor2 <- cor(datos$neutra,datos$alegria)
 cor3 <- cor(datos$alegria,datos$tristeza)
 mean.cor <- mean(cor1,cor2,cor3)
-print(tabla, comment = F)
-print(tabla2, comment = F)
+# print(tabla, comment = F)
+# print(tabla2, comment = F)
+knitr:: kable(datos,caption = "Datos del ejemplo 3.1")
+knitr:: kable(tab.cor,caption = "Correlaciones del ejemplo 3.1")
+
 ```
 
 
-```{r,echo = FALSE,fig.cap= "Datos del ejemplo 4.1",,message=FALSE,warning=FALSE}
 
-boxplot(datos, col= c('red','green','orange'))
+
+
+```{r,echo = FALSE,fig.cap= "Boxplot del ejemplo 3.1",,message=FALSE,warning=FALSE,out.widht="80%",fig.align='center'}
+
+#boxplot(datos, col= c('red','green','orange'), ylab= "Respuesta galvánica")
+
+knitr:: include_graphics("figurasR/boxplot31.png")
 
 ```
 
@@ -129,7 +137,7 @@ $$
 
 - Varianza del error:
 $$
-MC_E = \sum_{i}\sum_{j}(Y_{ij}- \bar{Y}_{i+}- \bar{Y}_{+j}-\bar{Y}_{++})^2/[(j-1)(n-1)] = ((72-75-67 + 76)^2 + \cdots + (86-73-85 + 76)^2)/(2*3) = 96/6 = 16
+MC_E = \sum_{i}\sum_{j}(Y_{ij}- \bar{Y}_{i+}- \bar{Y}_{+j}-\bar{Y}_{++})^2/[(j-1)(n-1)] = \\ ((72-75-67 + 76)^2 + \cdots + (86-73-85 + 76)^2)/(2*3) = 96/6 = 16
 $$
 
 $$
@@ -144,8 +152,8 @@ La región crítica en este caso corresponde a $P(\mathcal{F}_{2,6} > F)$ = `r r
 library(foreign)
 library(xtable)
 datos<- read.spss("data/ejemociones31-15.sav",to.data.frame = T)
-tabla<- xtable(datos, caption = "Datos del ejemplo 4.1")
-print(tabla, comment = F)
+# tabla<- xtable(datos, caption = "Datos del ejemplo 3.1")
+# print(tabla, comment = F)
 ```
 
 ```{r,echo = FALSE,results = 'markdown',message=FALSE,warning=FALSE}
@@ -174,7 +182,7 @@ summary(mlmaov,multivariate = F)[5]
 [^3.2]: Si en el diseño sólo hay dos medidas por sujeto siempre se cumple el supuesto de esfericidad.
 
 
-\noindent Observamos que el valor obtenido por Geiser-Greenhouse (0.75) es menor que el de Huyndt-Feldt (1.33 $\simeq$ 1). En ambos casos, los estadísticos nos llevan a rechazar la hipótesis de esfericidad. El resultado denominado *sphericity.test* con valor de 0.66 es el test de Mauchly.
+\noindent Observamos que el valor obtenido por Geiser-Greenhouse (0.75) es menor que el de Huyndt-Feldt (1.33 $\simeq$ 1). En ambos casos, los estadísticos nos llevan a rechazar la hipótesis nula de igualdad de medias. El resultado denominado *sphericity.test* con valor de 0.66 es el test de Mauchly, indicándonos que se acepta la hipótesis de esfericidad. 
 
 Hay ocasiones en las que existen más medidas repetidas que sujetos. En estos casos, @pardo recomiendan utilizar el estadístico F modificando los grados de libertad con el menor valor de $\epsilon$. Si no se rechaza la hipótesis con esta opción, utilizar las estimaciones de $\epsilon$ propuestas anteriormente (la de Geisser-Greenhouse o Huyndt-Feldt, cualquiera de ellas vale).  
 
@@ -231,7 +239,8 @@ $$
 
 ## Potencia de la prueba
 
-La potencia de la prueba nos permite determinar la probabilidad de que en un estudio se rechace la hipótesis nula cuando es falsa. La potencia de la prueba en un diseño A1MR depende de varios factores: 1) el nivel $\alpha$ de significación, la correlación entre las VVDD, el tamaño del efecto que se desea contrastar, el número de condiciones en el diseño, el valor estimado de $\epsilon$ y el número de sujetos. Aplicado al estudio de las emociones anteriormente presentado tenemos que hemos utilizado $\alpha$ = 0.05, la correlación media entre las distintas medidas es `r round(mean.cor,3)`, el tamaño del efecto medido con el estadístico $\delta$ es 1.79, tenemos 3 condiciones, el valor más conservador de $\epsilon$ es 0.75 y hemos estudiado a 4 sujetos. Utilizando el programa Gpower ( http://www.gpower.hhu.de). Bajo estas condiciones obtenemos un valor de potencia de 0.9949. Por lo general, suele considerarse razonable un valor de potencia de 0.8. Si hubiéramos utilizado tres sujetos la potencia también seguiría siendo razonable (0.901).   
+La potencia de la prueba nos permite determinar la probabilidad de que en un estudio se rechace la hipótesis nula cuando es falsa.En un diseño A1MR depende de varios factores: 1) el nivel $\alpha$ de significación, la correlación entre las VVDD, el tamaño del efecto que se desea contrastar, el número de condiciones en el diseño, el valor estimado de $\epsilon$ y el número de sujetos. Aplicado al estudio de las emociones anteriormente presentado tenemos que hemos utilizado $\alpha$ = 0.05, la correlación media entre las distintas medidas es `r round(mean.cor,3)`, el tamaño del efecto medido con el estadístico $\delta$ es 1.79, tenemos 3 condiciones, el valor más conservador de $\epsilon$ es 0.75 y hemos estudiado a 4 sujetos. Bajo estas condiciones y utilizando el programa Gpower (http://www.gpower.hhu.de) obtenemos un valor de potencia de 0.9949. Por lo general, suele considerarse razonable un valor de potencia de 0.8. Si hubiéramos utilizado tres sujetos la potencia también seguiría siendo razonable (0.901). 
+ 
 
 
 ## Comparaciones múltiples
@@ -291,18 +300,15 @@ t.test(cont)
 
 ## Prueba de Friedman
 
-Cuando la variable no cumple el supuesto de normalidad o la VD está medida de manera ordinal lo recomendable es utilizar la prueba de Friedman para estudiar si existen diferencias significativas entre las distintas condiciones. Esta prueba es una extensión de la prueba W de Wilcoxon para dos medidas.
+Cuando la variable no cumple el supuesto de normalidad o la VD está medida de manera ordinal lo recomendable es utilizar la prueba de Friedman para estudiar si existen diferencias significativas entre las distintas condiciones. Esta prueba es una extensión de la prueba W de Wilcoxon para dos medidas.Para poder utilizar esta prueba las respuestas deben ser variables continuas y estar medidas por lo menos en una escala ordinal.
 
-La hipótesis nula que se contrasta es que las respuestas asociadas a cada uno de los "tratamientos" tienen la misma distribución de probabilidad o distribuciones con la misma mediana, frente a la hipótesis alternativa de que por lo menos la distribución de una de las respuestas difiere de las demás. Para poder utilizar esta prueba las respuestas deben ser variables contínuas y estar medidas por lo menos en una escala ordinal.
-
-La hipótesis nula que se contrasta es que las medianas de las distintas condiciones proceden de la misma población. Rechazar ésta hipótesis implica que los centros de la distribución proceden de poblaciones distintas. 
-
-Para contrastar esta hipótesis hay que transformar las puntuaciones de cada individuo en puntuaciones ordenadas (rangos). Si hay empates las puntuaciones se sustituyen por el rango medio. 
-
-## Ejemplo de diseño unifactorial de medidas repetidas
+La hipótesis nula que se contrasta es que las respuestas asociadas a cada uno de los "tratamientos" tienen la misma distribución de probabilidad o distribuciones con la misma mediana, frente a la hipótesis alternativa de que por lo menos la distribución de una de las respuestas difiere de las demás. Rechazar ésta hipótesis implica que los centros de la distribución proceden de poblaciones distintas. Para contrastar esta hipótesis hay que transformar las puntuaciones de cada individuo en puntuaciones ordenadas (rangos). Si hay empates las puntuaciones se sustituyen por el rango medio. 
 
 
-Si aplicamos esta técnica a los datos del ejemplo 1 tendremos los siguientes rangos:
+# Ejemplo de diseño unifactorial de medidas repetidas
+
+
+Si aplicamos esta técnica a los datos del ejemplo 1:
 
 
 ```{r,echo = F,results='markup',message=FALSE,warning=FALSE}
@@ -323,7 +329,7 @@ a4 <- rank(datos[4,])
 rangos <- as.data.frame(matrix(c(a1,a2,a3,a4),4,3, byrow = T))
 #tabla.r<- xtable(rangos, caption = "Rangos del ejemplo 1")
 # print(tabla.r, comment = F)
-knitr:: kable(rangos,caption = "Rangos del ejemplo 1")
+knitr:: kable(rangos,caption = "Rangos del ejemplo 3.1")
 ```
 
 
@@ -340,7 +346,7 @@ Q = \frac{12}{4*3(3+1)}(4^2 + 8^2 + 12^2) - 3*4*4 = \frac{224}{4}-48 = 8
 $$
 
 
-\noindent tenemos que P($\chi^2$ > Q) = `r 1 - round(pchisq(8,2),3)` por lo que rechazamos la hipótesis nula de que los rangos medios de cada condición proceden de la misma población. Utilizando el programa R obtenemos los mismo resultados:
+\noindent tenemos que P($\chi^2(2)$ > Q) = `r 1 - round(pchisq(8,2),3)` por lo que rechazamos la hipótesis nula de que los rangos medios de cada condición proceden de la misma población. Utilizando el programa R obtenemos los mismo resultados:
 
 
 ```{r,echo = F,,message=FALSE,warning=FALSE}
@@ -359,7 +365,7 @@ knitr::include_graphics("figurasR/anova1fmrjamovia2.jpg")
 ```
 
 
-- Definimos las variables e introducimos cada variable en su lugar. Asimismo, damos nombre la variable dependiente:
+- Definimos las variables e introducimos cada variable en su lugar. Asimismo, damos nombre a la variable dependiente:
 
 
 ```{r, echo=FALSE,fig.cap= "Definición de las variables en JAMOVI",fig.align='center',out.width="70%"}
@@ -508,7 +514,7 @@ knitr::include_graphics("figurasR/friedman1b.jpg")
 ```
 
 
-- Se introducen las  variables en el cuadro central. Por defecto aparece marcada la opción de la prueba de Friedman. En el botón de *Exacta* podemos decidir si la significación se calcula medianta aproximación asintótica, de manera exacta o mediante simulación de montecarlo. El defecto es mediante aproximación asintótica.  
+- Se introducen las  variables en el cuadro central. Por defecto aparece marcada la opción de la prueba de Friedman. En el botón de *Exacta* podemos decidir si la significación se calcula mediante aproximación asintótica, de manera exacta o mediante simulación de montecarlo. El defecto es mediante aproximación asintótica.  
 
 
 
