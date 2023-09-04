@@ -42,10 +42,9 @@ $$
 
 Como en todo contraste estadístico, se plantean dos hipótesis, $H_0$ o hipótesis nula y $H_1$, hipótesis alternativa. En este modelo se definen de la siguiente forma:
 
-\begin{itemize}
-\item $H_{0}$: $\mu_{1} = \mu_{2} = \cdots \mu_{j}$ (todas las medias son iguales)
-\item $H_{1}$: $\mu_{i} \neq \mu_{j}$ (i $\neq$ j) (no todas las medias son iguales)
-\end{itemize}
+- $H_{0}$: $\mu_{1} = \mu_{2} = \cdots \mu_{j}$ (todas las medias son iguales)
+- $H_{1}$: $\mu_{i} \neq \mu_{j}$ (i $\neq$ j) (no todas las medias son iguales)
+
 
 El contraste compara las diferencias entre medias muestrales con la variabilidad experimental para decidir si ésta ha podido generar esas diferencias o no. Tanto la diferencia entre las medias (MCA) como la variabilidad experimental (varianza intrasujeto ó MCE) son dos formas de estimar la varianza poblacional. Bajo el supuesto de hipótesis nula, ambas varianzas deben ser iguales.
 
@@ -75,8 +74,9 @@ knitr::kable(a,caption ="Datos del ejemplo 2.1")
 
 
 
-```{r,echo = FALSE,fig.cap = 'Boxplot de los resultados del ejemplo 2.1',fig.align='center'}
-plot(aciertos~grupo, col=c("green","red","orange"),horizontal=T,xlab="Grupos",ylab= "Aciertos")
+```{r,echo = FALSE,fig.cap = 'Boxplot de los resultados del ejemplo 2.1',,out.width="80%",fig.align='center'}
+#plot(aciertos~grupo, col=c("green","red","orange"),horizontal=T,xlab="Grupos",ylab= "Aciertos")
+knitr:: include_graphics("figurasR/boxplot21.png")
 ```
 
 
@@ -198,13 +198,13 @@ En un determinado estudio existen ${2 \choose n}$ parejas de medias que han de s
 $\mu_C \neq \mu_B$. Si solo tuviéramos que realizar una comparación la tasa de error sería $\alpha$ (error tipo I). Si $\alpha$ vale 0,05 la probabilidad de cometer un error tipo I será 0,05. Sin embargo, cuando realizamos más de una comparación esta probabilidad será diferente. Mientras mayor sea el número de comparaciones a realizar, mayor será la probabilidad de rechazar la hipótesis nula cuando es verdadera (error tipo I). En nuestro caso, si tenemos que realizar 3 comparaciones la probabilidad de no cometer un error tipo I será:
 
 $$
-P(ningún\; error\; tipo\; I) = {3 \choose 0}.05^0.95^3 = 0.857
+P(\text{ningún error tipo I}) = {3 \choose 0}.05^0.95^3 = 0.857
 $$
 
 Por lo que cometer algún error tipo I será 1 - 0,857 = 0,143. Es decir, la tasa de error tipo I aumenta a medida que aumentamos el número de comparaciones. En general, podemos considerar que la probabilidad de cometer al menos un error tipo I en *k* comparaciones utilizando $\alpha$ en cada comparación es:
 
 $$
-P(un\; error\; tipo\; I\;o\;mas) = 1 - (1 - \alpha)^k 
+P(un\; error\; tipo\; I\;o\;más) = 1 - (1 - \alpha)^k 
 $$
 
 El criterio de Bonferroni es uno de los procedimientos utilizados para corregir la tasa de error. Consiste en dividir el nivel de significación $\alpha$ (habitualmente $\alpha$ = 0,05) por el número de comparaciones que pueden realizarse en el diseño. En nuestro ejemplo será $\alpha_{CB}$ = 0,05/3 = 0,01667. Esta corrección tiene sentido en el caso de que se aplique varias veces una misma prueba estadística en un estudio, ya que la probabilidad de rechazar $H_0$ aumenta a medida que se incrementan las comparaciones posibles. Un criterio ligeramente diferente es el propuesto por Sidak. Este método es algo menos conservador que el de Bonferroni, ya que se cumple que $\alpha_{CB} \leq \alpha_{CS}$ Con ambos criterios se  asume que las comparaciones son independientes.
@@ -401,12 +401,13 @@ knitr::kable(a,caption="Datos del ejemplo 2.2")
 ```
 
 
-```{r,echo = FALSE}
+```{r,echo = FALSE, fig.align='center',fig.cap="Boxplot del ejemplo  2.2", out.width="80%"}
 # library(ggplot2)
 # ggplot(dat,aes(x = grupo, y = aciertos2))+
 #   geom_boxplot(colors=grupo)
   
-plot(aciertos2~grupo, col=c("green","red","orange"),horizontal=T,xlab="Método", ylab= "Rendimiento",main = "Figura del ejemplo 2.2")
+# plot(aciertos2~grupo, col=c("green","red","orange"),horizontal=T,xlab="Método", ylab= "Rendimiento",main = "Figura del ejemplo 2.2")
+knitr::include_graphics("figurasR/boxplot22.png")
 ```
 
 Observamos que los grupos son bastante asimétricos. En particular, se tiene que el grupo B muestra una distribución muy alejada de la normalidad. Esto puede comprobarse mediante el estadístico de Shapiro-Wilks:
@@ -469,7 +470,7 @@ Al igual que en el caso del ANOVA, para conocer cuáles son las diferencias sign
 
 ### Comparaciones a posteriori
 
-Cuando no se cumplen los supuestos de aplicación del ANOVA las comparaciones a posteriori se realizan mediante la técnica *U de Mann-Whitney* (MW)[^2.3]. Esta prueba sirve, al igual que la prueba T de Student para comparar dos muestras independientes. Resulta útil cuando no se cumple la hipótesis de normalidad o los datos son ordinales. 
+Cuando no se cumplen los supuestos de aplicación del ANOVA las comparaciones a posteriori se pueden realizar mediante la técnica *U de Mann-Whitney* (MW)[^2.3]. Esta prueba sirve, al igual que la prueba T de Student para comparar dos muestras independientes. Resulta útil cuando no se cumple la hipótesis de normalidad o los datos son ordinales. 
 
 [^2.3]:JAMOVI utiliza la prueba de Dwass-Steel-Critchlow-Fligner
 
@@ -493,7 +494,7 @@ Z = \frac{U - \mu_U}{\sigma_U} \qquad donde \qquad \mu_U = \frac{n_1(N+1)}{2} \q
 $$
 *Ejemplo*
 
-En el ejemplo que se estudió cuando se introdujo la técnicas KW encontramos que había diferencias significativas por lo que será necesario determinar las diferencias entre los  distintos métodos de enseñanza. Necesitamos determinar que métodos son los que muestran diferencias significativas:
+En el ejemplo 2.2 que se estudió cuando se introdujo la técnicas KW encontramos que había diferencias significativas por lo que será necesario determinar las diferencias entre los  distintos métodos de enseñanza. Necesitamos determinar que métodos son los que muestran diferencias significativas:
 
 *Prueba de U de Mann-whitney para métodos A y B:*
 ```{r,echo= FALSE,warning=FALSE,message=FALSE}
