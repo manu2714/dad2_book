@@ -32,7 +32,7 @@ Un ejemplo de este tipo de diseños propuesto por @maxwell en el que se deseaba 
 
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Tabla de datos",fig.align='center',out.width="90%",eval=FALSE}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Tabla de datos del ejemplo 5.1",fig.align='center',out.width="99%",eval=FALSE}
 
 knitr::include_graphics("figurasR/datos51.png")
 ```
@@ -49,24 +49,24 @@ tab1<- xtable(datos,caption= 'Datos del ejemplo 1')
 
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo AF2MR: Boxplot del ejemplo 1",fig.align='center',out.width="60%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo AF2MR: Boxplot del ejemplo 5.1",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/boxplot_ejemplo51.png")
 ```
 
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo AF2MR: Resultados del ejemplo 1",fig.align='center',out.width="50%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo AF2MR: Resultados del ejemplo 5.1",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/resultados51_jamovi.png")
 ```
 
 
 
-Estos resultados son válidos siempre y cuando se cumpla el supuesto de esfericidad estudiado en el tema 3. Una vez comprobado este supuesto con la prueba de Mauchly pueden tomarse decisiones acerca de la significación de los efectos. En este ejemplo la prueba de esfericidad nos permite aceptar la hipótesis nula. Asimismo, se puede observar que los valores de $\epsilon$ de Geisser-Greenhouse (GG) son más pequeños que los de Huynh-Feldt (HF). Utilizar los valores de GG para realizar los contrastes de hipótesis supone aplicar una estrategia conservadora en el análisis de los datos. 
+Estos resultados son válidos siempre y cuando se cumpla el supuesto de esfericidad estudiado en el tema 3. Una vez comprobado este supuesto con la prueba de Mauchly pueden tomarse decisiones acerca de la significación de los efectos. En este ejemplo la prueba de esfericidad nos permite aceptar la hipótesis nula. Asimismo, se puede observar que los valores de $\epsilon$ de Geisser-Greenhouse (GG) son más pequeños que los de Huynh-Feldt (HF). Utilizar los valores de GG para realizar los contrastes de hipótesis supone aplicar una estrategia conservadora en el análisis de los datos.  
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR: Prueba de esfericidad",fig.align='center',out.width="70%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR: Prueba de esfericidad del ejemplo 5.1",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/esfericidad51_jamovi.png")
 ```
@@ -104,7 +104,7 @@ Al igual que se mencionó en el tema 4, para estudiar los efectos interactivos l
 
 
 $$
-\phi_1 = \mu_{ausente.a0} - \mu_{presente.a0} -  (\mu_{ausente.a4} - (\mu_{presente.a4}) =  \mu_{a_1b_1} - \mu_{a_2b_1} - (\mu_{a_1b_2} -  \mu_{a_2b_2})
+\phi_1 = \overline{X}_{ausente.a0} - \overline{X}_{presente.a0} -  (\overline{X}_{ausente.a4} - (\overline{X}_{presente.a4}) =  \overline{X}_{a_1b_1} - \overline{X}_{a_2b_1} - (\overline{X}_{a_1b_2} -  \overline{X}_{a_2b_2})
 $$
 
 
@@ -114,7 +114,7 @@ $$
 
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en JAMOVI: Comparación efectos simples",fig.align='center',out.width="70%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en JAMOVI: Comparación efectos simples",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/contraste1_jamovi.png")
 ```
@@ -123,7 +123,7 @@ knitr::include_graphics("figurasR/contraste1_jamovi.png")
 \noindent Esta nueva variable creada (*Contraste 1*) supone una combinación lineal (suma de varias puntuaciones correspondientes a 4 variables). Bajo el modelo de hipótesis nula la suma de esta variable debe ser igual a 0. Para contrastar esta hipótesis podemos utiliazar la prueba T para una muestra (o la prueba de Wilcoxon en el caso de que no se cumpla el supuesto de normalidad). Los resultados de este análisis nos indican que rechazamos la hipótesis nula. Es decir existe un efecto interactivo significativo cuando se comparan los efectos simples de A en $b_1$ y $b_2$. 
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en JAMOVI: Resultado de la comparación del efecto de A en $b_1$ y $b_2$",fig.align='center',out.width="60%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en JAMOVI: Resultado de la comparación del efecto de A en $b_1$ y $b_2$",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/contraste1res_jamovi.png")
 ```
@@ -173,14 +173,14 @@ update_labels(g,list(y = 'Media TR',x = 'Angulo'))
 La segunda comparación entre los efectos simples sería la comparación del efecto de A cuando están presentes $b_1$ y $b_3$
 
 $$
-\phi_2 = \mu_{ausente.a0} - \mu_{presente.a0} -(\mu_{ausente.a8}  - \mu_{presente.a8})
+\phi_2 = \overline{X}_{ausente.a0} - \overline{X}_{presente.a0} -(\overline{X}_{ausente.a8}  - \overline{X}_{presente.a8})
 $$
 
 \noindent Creamos una nueva variable que denominamos *Contraste 2* de la siguiente forma:
 
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en JAMOVI: Comparación de efectos simples",fig.align='center',out.width="60%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en JAMOVI: Comparación de efectos simples",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/contraste2_jamovi.png")
 ```
@@ -194,27 +194,25 @@ knitr::include_graphics("figurasR/contraste2_jamovi.png")
 knitr::include_graphics("figurasR/contraste2res_jamovi.png")
 ```
 
-\noindent Encontramos de nuevo que el efecto de A en $b_1$ es mucho menor que cuando está presente $b_3$. El efecto de A en $b_1$ vale `r mean(datos[,1] - datos[,4])`. En cambio, cuando está presente $b_3$ el valor es `r mean(datos[,3] - datos[,6])`. Para terminar nos queda ver si existen diferencias en el efecto de A cuando está presente $b_2$ en comparación con la presencia de $b_3$. Sabemos que cuando está presente $b_2$ el efecto de A vale `r mean(datos[,2] - datos[,5])`, mientras que cuando está presente $b_3$ vale `r mean(datos[,3] - datos[,6])`. 
-
-Para determinar la significación de esta comparación el procedimiento es el mismo que en los casos anteriores. La comparación sería la siguiente:
+\noindent Encontramos de nuevo que el efecto de A en $b_1$ es mucho menor que cuando está presente $b_3$. El efecto de A en $b_1$ vale `r mean(datos[,1] - datos[,4])`. En cambio, cuando está presente $b_3$ el valor es `r mean(datos[,3] - datos[,6])`. Para terminar nos queda ver si existen diferencias en el efecto de A cuando está presente $b_2$ en comparación con la presencia de $b_3$. Sabemos que cuando está presente $b_2$ el efecto de A vale `r mean(datos[,2] - datos[,5])`, mientras que cuando está presente $b_3$ vale `r mean(datos[,3] - datos[,6])`. Para determinar la significación de esta comparación el procedimiento es el mismo que en los casos anteriores. La comparación sería la siguiente:
 
 
 $$
-\phi_3 = \mu_{ausente.a4} - \mu_{presente.a4} -  (\mu_{ausente.a8} - (\mu_{presente.a8}) =  \mu_{a_1b_2} - \mu_{a_2b_2} - (\mu_{a_1b_3} -  \mu_{a_2b_3})
+\phi_3 = \overline{X}_{ausente.a4} - \overline{X}_{presente.a4} -  (\overline{X}_{ausente.a8} - (\overline{X}_{presente.a8}) =  \overline{X}_{a_1b_2} - \overline{X}_{a_2b_2} - (\overline{X}_{a_1b_3} -  \overline{X}_{a_2b_3})
 $$
 
 
 \noindent Los resultados de este tercer contraste sería:
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en JAMOVI: Comparación de efectos simples",fig.align='center',out.width="60%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en JAMOVI: Comparación de efectos simples",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/contraste3_jamovi.png")
 ```
 
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en JAMOVI: Comparación de efectos simples",fig.align='center',out.width="60%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en JAMOVI: Comparación de efectos simples",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/contraste3res_jamovi.png")
 ```
@@ -233,7 +231,7 @@ Hay ocasiones en las que interesa al investigador conocer si el efecto de una VI
 Ilustramos este tipo de diseños con un estudio en el que se realizó un seguimiento de un grupo de pacientes lesionados en distintos momentos del tratamiento. La VI que se estudio de manera longitudinal es el paso del *tiempo* (inicio, mitad y final); la VI que agrupa a los sujetos es la *localización de la lesión* (hemisferio izquierdo *versus* hemisferio derecho). La VD fueron los resultados en una prueba de memoria. En la siguiente tabla se presentan los descriptivos para cada una de las condiciones:
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Datos del ejemplo 2",fig.align='center',out.width="70%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Descriptivos del ejemplo 5.2",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/desc52_jamovi.png")
 ```
@@ -278,7 +276,7 @@ g2 = ggplot(aux2, aes(x = Tiempo, y = Memoria.mean,colour = hemisferio,
 
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Gráfica del ejemplo 2",fig.align='center',out.width="70%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Gráfica del ejemplo 5.2",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/fig_lesion.png")
 ```
@@ -291,7 +289,7 @@ Los resultados de este ejemplo indican la existencia de una interacción signifi
 
 \newpage
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en JAMOVI: Resultados del ejemplo 2",fig.align='center',out.width="70%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en JAMOVI: Resultados del ejemplo 5.2",fig.align='center',out.width="70%"}
 
 knitr::include_graphics("figurasR/res52_jamovi.png")
 ```
@@ -300,7 +298,7 @@ Para considerar como válidos estos resultados es necesario que se cumplan los s
 
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en JAMOVI: Prueba de esfericidad del ejemplo 2",fig.align='center',out.width="70%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en JAMOVI: Prueba de esfericidad del ejemplo 5.2",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/esfericidad52_jamovi.png")
 ```
@@ -334,7 +332,7 @@ $$
 En el caso de que no resulte signficativo el efecto de la interacción AB y exista algún efecto principal (A y/o B) significativo habrá que continuar realizando las comparaciones *a posteriori* tal y como se indicó en los temas anteriores. Si el efecto interactivo AB resulta significativo será necesario realizar las comparaciones de los efectos simples. Para ello se calculan las diferencias entre las distintas medidas repetidas. Esas diferencias se comparan entre los distintos grupos tal y como se hizo en el tema 1 para la comparación de muestras independientes. En nuestro caso los resultados aparecen en la siguiente tabla:
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en JAMOVI: Comparación de los efectos simples",fig.align='center',out.width="70%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en JAMOVI: Comparación de los efectos simples",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/simples52_jamovi.png")
 ```
@@ -347,14 +345,14 @@ knitr::include_graphics("figurasR/simples52_jamovi.png")
 
 ## Análisis de los ejemplos con SPSS
 
-### Análisis del ejemplo 1 con SPSS
+### Análisis del ejemplo 5.1 con SPSS
 
 
 \noindent Para analizar estos datos mediante el programa SPSS es necesario utilizar la opción *Analizar + Modelo lineal general + Medidas repetidas* tal y como aparece en la siguiente figura:
 
 \newpage
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Selección del modelo A2FMR en SPSS",fig.align='center',out.width="60%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Selección del modelo A2FMR en SPSS",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/anovamr6b.jpg")
 ```
@@ -364,7 +362,7 @@ knitr::include_graphics("figurasR/anovamr6b.jpg")
 
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Definición de las variables en el modelo A2FMR en SPSS",fig.align='center',out.width="60%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Definición de las variables en el modelo A2FMR en SPSS",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/variables51.png")
 ```
@@ -374,7 +372,7 @@ La prueba de esfericidad nos indica la idoneidad de estos resultados. Podemos ob
 
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR: Prueba de esfericidad",fig.align='center',out.width="60%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR: Prueba de esfericidad",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/esfericidad52b.png")
 ```
@@ -385,7 +383,7 @@ knitr::include_graphics("figurasR/esfericidad52b.png")
 
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Tabla ANOVA",fig.align='center',out.width="60%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Tabla ANOVA",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/tabla51d2.png")
 ```
@@ -395,14 +393,14 @@ knitr::include_graphics("figurasR/tabla51d2.png")
 
 1. Creamos las nuevas variables que denominamos "Contraste". Para el *Contraste1" sería:
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación efectos simples",fig.align='center',out.width="60%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación efectos simples",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/contraste1b.png")
 ```
 
 \noindent Analizamos esta variable mediante el procedimiento de "Prueba T para una muestra":
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación efectos simples: Contraste 1",fig.align='center',out.width="60%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación efectos simples: Contraste 1",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/contraste1res.png")
 ```
@@ -411,7 +409,7 @@ knitr::include_graphics("figurasR/contraste1res.png")
 2. Creamos una nueva variable que denominamos *Contraste 2* de la siguiente forma:
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación de efectos simples",fig.align='center',out.width="60%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación de efectos simples",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/contraste251c.png")
 ```
@@ -420,7 +418,7 @@ knitr::include_graphics("figurasR/contraste251c.png")
 \noindent Los resultados obtenidos con este segundo contraste se muestran en la siguiente figura:
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación de efectos simples",fig.align='center',out.width="60%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación de efectos simples",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/contraste2res2b.png")
 ```
@@ -429,7 +427,7 @@ knitr::include_graphics("figurasR/contraste2res2b.png")
 3. El tercer contraste es la diferencia en el efecto de A cuando está presente $b_2$ en comparación con la presencia de $b_3$. Para determinar la significación de esta comparación el procedimiento es el mismo que en los casos anteriores. Los resultados de este tercer contraste serían:
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación de efectos simples",fig.align='center',out.width="60%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación de efectos simples",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/contraste3resb.png")
 ```
@@ -442,7 +440,7 @@ El programa SPSS presenta una tabla donde aparecen las comparaciones entre los d
 
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación de efectos simples",fig.align='center',out.width="70%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación de efectos simples",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/contrastesspssc.png")
 ```
@@ -451,14 +449,14 @@ knitr::include_graphics("figurasR/contrastesspssc.png")
 
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación de efectos simples",fig.align='center',out.width="70%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación de efectos simples",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/contrastes2spssb.png")
 ```
 
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación de efectos simples",fig.align='center',out.width="70%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación de efectos simples",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/contrastes3spssb.png")
 ```
@@ -473,19 +471,19 @@ En el caso de que el efecto de la interacción no sea significativo este diseño
 
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación de efectos simples",fig.align='center',out.width="70%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación de efectos simples",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/contrastes4spssb.png")
 ```
 
 
-### Análisis del ejemplo 2 con SPSS
+### Análisis del ejemplo 5.2 con SPSS
 
 Un resumen de las distintas condiciones en el diseños son las siguientes:
 
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Descriptivos",fig.align='center',out.width="70%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Descriptivos",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/descriptivosb.png")
 ```
@@ -494,7 +492,7 @@ Para realizar el análisis de este tipo de diseños mediante el programa SPSS se
 
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Datos del ejemplo 2",fig.align='center',out.width="70%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Datos del ejemplo 5.2",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/variables52b.png")
 ```
@@ -504,7 +502,7 @@ Los resultados de este ejemplo indican la existencia de una interacción signifi
 
 \newpage
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Resultados del ejemplo 2",fig.align='center',out.width="70%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Resultados del ejemplo 2",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/resultados52b.png")
 ```
@@ -514,9 +512,7 @@ Para considerar como válidos estos resultados es necesario que se cumplan los s
 
 
 
-
-
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Prueba de esfericidad del ejemplo 2",fig.align='center',out.width="70%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Prueba de esfericidad del ejemplo 2",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/esfericidad52b.png")
 ```
@@ -525,7 +521,7 @@ knitr::include_graphics("figurasR/esfericidad52b.png")
 La prueba de Box-Cox nos permite contrastar el supuesto de homogeneidad de varianzas-covarianzas. Esta prueba se obtiene dentro de la ventana de *opciones* marcando la opción de *pruebas de homogeneidad*. Observamos que p = 0.05 por lo que aceptamos la hipótesis de que las matrices de varianzas y covarianzas del grupo con lesión en hemisferio izquierdo es semejante a la del hemisferio izquierdo.
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Prueba de boxcox del ejemplo 2",fig.align='center',out.width="20%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Prueba de boxcox del ejemplo 5.2",fig.align='center',out.width="40%"}
 
 knitr::include_graphics("figurasR/boxcox52b.png")
 ```
@@ -535,7 +531,7 @@ knitr::include_graphics("figurasR/boxcox52b.png")
 \noindent Encontramos que la comparación entre el efecto simple del nivel 1 frente al 3 muestran diferencias significativas. Para encontrar la comparación entre el nivel 2 y el nivel 3 solo basta cambiar la categoría de referencia (hay que poner la última) en la opción de contrastes. También resulta significativa. 
 
 
-```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación de los efectos simples",fig.align='center',out.width="70%"}
+```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR en SPSS: Comparación de los efectos simples",fig.align='center',out.width="90%"}
 
 knitr::include_graphics("figurasR/result52b.png")
 ```
