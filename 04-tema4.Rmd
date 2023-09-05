@@ -158,7 +158,7 @@ knitr::include_graphics("figurasR/fact_simu.png")
 
 
 
-### Ejemplo 1 de diseño factorial
+### Ejemplo 4.1 de diseño factorial
 
 Supongamos que estamos interesados en estudiar si el efecto de la dieta ($a_1$ = Dieta A, $a_2$ = Dieta B) sobre la actividad motora depende de las horas de sueño $b_1$ = 2 horas, $b_2$ = 4 horas y $b_3$ = 6 horas). Los resultados de los sujetos aparecen a continuación:
 
@@ -219,7 +219,7 @@ Una vez que se constata la existencia de interacción en el diseño, el paso sig
 ```{r,tab42, echo=FALSE}
 library(tidyr)
 library(kableExtra)
-#knitr::include_graphics("figurasR/MediasEjemplo3-1.png")
+#knitr::include_graphics("figurasR/MediasEjemplo33-1.png")
 medias<- c(6.6,11,6.6,6.4,7,7)
 # tab42<- matrix(medias,1,6,byrow=T, dimnames= list(c("Medias"),c("$\overline{X}_{a_1b_1}$","$\overline{X}_{a_2b_1}$","$\overline{X}_{a_1b_2}$", "$\overline{X}_{a_2b_2}$", "$\overline{X}_{a_1b_3}$", "$\overline{X}_{a_2b_3}$")))
 tab42<- matrix(medias,1,6,byrow=T, dimnames= list(c("Medias"),c("$a_1b_1$","$a_2b_1$","$a_1b_2$", "$a_2b_2$", "$a_1b_3$", "$a_2b_3$")))
@@ -312,12 +312,12 @@ $$
 \noindent El estadístico *t* para un nivel de confianza del 95% tiene un valor de `r round(qt(.95, 24),2)` por lo que puede considerarse que el primer ($\phi_1$) y el tercer contraste ($\phi_3$) resultan significativos (F(2,24) = 3.9, p = .034, $\eta_p$ = 0.298, indicando un tamaño de efecto grande). Observando en la figura apreciamos que ***el efecto de la dieta con 4 horas de sueño fue significativamente distinto en comparación con el efecto de la dieta a las 2 horas (t(24) = 1.99, p =.029) y 6 horas de sueño (t(24) = 2.30, p =.015)***. 
 
 
-### Ejemplo 2 de diseño factorial
+### Ejemplo 4.2 de diseño factorial
 
 Supongamos que estamos interesados en estudiar si la memoria de trabajo de escolares se veía afectada por las variables edad y cantidad de zonas verdes próximas al centro educativo. Para realizar el análisis de los datos debemos asegurarnos de que se cumplen los supuestos de la prueba (normalidad y homogeneidad de las varianzas). En la siguiente figura se representan los datos por condición del estudio.
 
 
-```{r, echo=FALSE,fig.cap= "Boxplot del ejemplo 2",out.width="400px",fig.align='center'}
+```{r, echo=FALSE,fig.cap= "Boxplot del ejemplo 4.2",out.width="400px",fig.align='center'}
 knitr::include_graphics("figurasR/boxplot_ejemplo2.png")
 ```
 
@@ -326,13 +326,13 @@ Realizando el análisis de la varianza observamos que la interacción no resulta
 
 \newpage
 
-```{r, echo=FALSE,fig.cap= "Resultados del ejemplo 2",fig.align='center',out.width="450px"}
+```{r, echo=FALSE,fig.cap= "Resultados del ejemplo 4.2",fig.align='center',out.width="450px"}
 knitr::include_graphics("figurasR/anova_ejemplo2.png")
 ```
 
 
 
-```{r, echo=FALSE,fig.cap= "Prueba de Tuckey para las comparaciones de edad del ejemplo 2",out.width="400px",fig.align='center'}
+```{r, echo=FALSE,fig.cap= "Prueba de Tuckey para las comparaciones de edad del ejemplo 4.2",out.width="400px",fig.align='center'}
 knitr::include_graphics("figurasR/tuckey_ejemplo2.png")
 ```
 
@@ -353,14 +353,14 @@ knitr::include_graphics("figurasR/fact_ejem3_1_jamovi.png")
 \noindent Una vez introducidos los datos el programa nos indica el resultado de la interacción. Observamos que la diferencia entre las medias de las dietas fue distinta a las 2 que a las 4 horas.
 
 
-```{r, echo=FALSE,fig.cap= "Resultado de la interacción del ejemplo 3-1",fig.align='center',out.width="50%"}
+```{r, echo=FALSE,fig.cap= "Resultado de la interacción del ejemplo 4.1",fig.align='center',out.width="50%"}
 knitr::include_graphics("figurasR/fact_ejem3_1_jamovi2.png")
 ```
 
 \newpage
 
 
-```{r, echo=FALSE,fig.cap= "Resultado de la interacción del ejemplo 3-1",fig.align='center',out.width="70%"}
+```{r, echo=FALSE,fig.cap= "Resultado de la interacción del ejemplo 4.1",fig.align='center',out.width="70%"}
 knitr::include_graphics("figurasR/fact_ejem3_1_jamovi3.png")
 ```
 
@@ -368,11 +368,11 @@ En la siguiente figura se aprecia que las diferencias entre las dietas aparecier
 
 
 
-```{r, echo=FALSE,fig.cap= "Representación gráfica del ejemplo 3-1",fig.align='center',out.width="60%"}
+```{r, echo=FALSE,fig.cap= "Representación gráfica del ejemplo 4.1",fig.align='center',out.width="60%"}
 knitr::include_graphics("figurasR/fact_ejemplo31_jamovi.png")
 ```
 
-```{r, echo=FALSE,fig.cap= "Comparación de los efectos simples del ejemplo 3-1",out.width="70%",fig.align='center'}
+```{r, echo=FALSE,fig.cap= "Comparación de los efectos simples del ejemplo 4.1",out.width="70%",fig.align='center'}
 knitr::include_graphics("figurasR/fact_ejem3_1_jamovi4.png")
 ```
 
@@ -428,7 +428,7 @@ knitr::include_graphics("figurasR/anova1Fspss.jpg")
 ```
 
 
-+ El paso siguente consiste en introducir la variable dependiente de nuestro diseño (vd en el ejemplo 4.1) en el cuadro denominado *Lista de dependientes*  y la  variable *ab*. En esta ventana pulsaremos el btón de *Contrastes* para introducir las comparaciones de los efectos simples. 
++ El paso siguente consiste en introducir la variable dependiente de nuestro diseño (vd en el ejemplo 4.1) en el cuadro denominado *Lista de dependientes*  y la  variable *ab*. En esta ventana pulsaremos el botón de *Contrastes* para introducir las comparaciones de los efectos simples. 
 
 
 
