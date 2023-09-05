@@ -63,7 +63,7 @@ knitr::include_graphics("figurasR/resultados51_jamovi.png")
 
 
 
-Estos resultados son válidos siempre y cuando se cumpla el supuesto de esfericidad estudiado en el tema 3. Una vez comprobado este supuesto con la prueba de Mauchly pueden tomarse decisiones acerca de la significación de los efectos. En este ejemplo se obtienen los siguientes resultados en relación con la prueba de esfericidad. Podemos observar que los valores de $\epsilon$ de Geisser-Greenhouse (GG) son más pequeños que los de Huynh-Feldt (HF). Utilizar los valores de GG para realizar los contrastes de hipótesis supone aplicar una estrategia conservadora en el análisis de los datos.  
+Estos resultados son válidos siempre y cuando se cumpla el supuesto de esfericidad estudiado en el tema 3. Una vez comprobado este supuesto con la prueba de Mauchly pueden tomarse decisiones acerca de la significación de los efectos. En este ejemplo la prueba de esfericidad nos permite aceptar la hipótesis nula. Asimismo, se puede observar que los valores de $\epsilon$ de Geisser-Greenhouse (GG) son más pequeños que los de Huynh-Feldt (HF). Utilizar los valores de GG para realizar los contrastes de hipótesis supone aplicar una estrategia conservadora en el análisis de los datos. 
 
 
 ```{r, echo= FALSE,results="asis",message=FALSE,warning=FALSE,fig.cap= "Modelo A2FMR: Prueba de esfericidad",fig.align='center',out.width="70%"}
