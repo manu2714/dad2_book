@@ -20,7 +20,7 @@ Sin embargo, también cabe la posibilidad de seleccionar un único grupo y prese
 
 
 ```{r, echo=FALSE,fig.cap= "Árbol de decisión del diseño univariable de medidas repetidas",fig.align='center',out.width="70%"}
-knitr::include_graphics("figurasR/anova1fmr2.png")
+knitr::include_graphics("figurasR/anova1fmr3.png")
 ```
 
 
