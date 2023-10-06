@@ -111,7 +111,7 @@ mean.cor <- mean(cor1,cor2,cor3)
 # print(tabla, comment = F)
 # print(tabla2, comment = F)
 knitr:: kable(datos,caption = "Datos del ejemplo 3.1")
-knitr:: kable(tab.cor,caption = "Correlaciones del ejemplo 3.1")
+knitr:: kable(tab.cor,algign = "ccc",caption = "Correlaciones del ejemplo 3.1")
 
 ```
 
