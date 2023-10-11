@@ -23,7 +23,7 @@ knitr::include_graphics("figurasR/anova1f2.jpg")
 ```
 
 
-Como puede observarse en el diagrama son dos criterios los que nos permiten determinar la técnica estadística adecuada. En primer lugar, será necesario determinar si las muestras de los distintos grupos proceden de una distribución normal. Para ello, puede  utilizarse la prueba de *Shapiro-Wilks*. Si no existe evidencia de que las muestras estudiadas procedan de una población normal o que la distribución de los errores es normal se utilizará la técnica de *Kruskal-Wallis*.
+Como puede observarse en el diagrama son dos criterios los que nos permiten determinar la técnica estadística adecuada. En primer lugar, será necesario determinar si las muestras de los distintos grupos proceden de una distribución normal. Para ello, puede  utilizarse la prueba de *Shapiro-Wilk*. Si no existe evidencia de que las muestras estudiadas procedan de una población normal o que la distribución de los errores es normal se utilizará la técnica de *Kruskal-Wallis*.
 
 En el caso de que haya información suficiente para asumir el supuesto de normalidad será necesario determinar si las varianzas de los grupos son homogéneas o no. Para ello, puede utilizarse la *prueba de Levene*. En el caso de que no se cumpla este supuesto se utilizará la prueba de *Brown-Forsythe* [^2.1]. Si los  datos de nuestro estudio cumplen todos los supuestos utilizaremos la  técnica de *Anova de 1 factor completamente aleatorizado*.
 
@@ -410,7 +410,7 @@ knitr::kable(a,caption="Datos del ejemplo 2.2")
 knitr::include_graphics("figurasR/boxplot22.png")
 ```
 
-Observamos que los grupos son bastante asimétricos. En particular, se tiene que el grupo B muestra una distribución muy alejada de la normalidad. Esto puede comprobarse mediante el estadístico de Shapiro-Wilks:
+Observamos que los grupos son bastante asimétricos. En particular, se tiene que el grupo B muestra una distribución muy alejada de la normalidad. Esto puede comprobarse mediante el estadístico de Shapiro-Wilk:
 
 
 *Media del grupo A:*

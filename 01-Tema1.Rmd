@@ -155,7 +155,7 @@ a
 + $H_0$: $\mu_{rendimiento}$ = 6 
 + $H_1$: $\mu_{rendimiento} \neq$ 6 
 
-Como no conocemos el sentido de la dirección asumimos que la hipótesis es bilateral. Para contrastar esta hipótesis necesitamos conocer si la distribución de la variable sigue una ley normal. En caso de que se cumpla esta hipótesis realizaremos el contraste con la prueba *t* para una muestra. Si no se cumple, usaremos la *prueba de Wilcoxon para una muestra*. El estadístico de Shapiro-Wilks indica que se cumple la normalidad de la variable por lo que usamos la prueba *t*.
+Como no conocemos el sentido de la dirección asumimos que la hipótesis es bilateral. Para contrastar esta hipótesis necesitamos conocer si la distribución de la variable sigue una ley normal. En caso de que se cumpla esta hipótesis realizaremos el contraste con la prueba *t* para una muestra. Si no se cumple, usaremos la *prueba de Wilcoxon para una muestra*. El estadístico de Shapiro-Wilk indica que se cumple la normalidad de la variable por lo que usamos la prueba *t*.
 
 
 ```{r}
@@ -279,11 +279,11 @@ knitr::include_graphics("figurasR/T1bjamovi.png")
 ##### Prueba de normalidad de Shapiro-Wilk
 
 
-Para determinar la normalidad será necesario aplicar la prueba de Shapiro-Wilks. En el programa SPSS se hace marcando *Analizar + Explorar + Gráficos + Gráficos con pruebas de normalidad*. Los resultados obtenidos pueden observarse en las siguientes imágenes.
+Para determinar la normalidad será necesario aplicar la prueba de Shapiro-Wilk. En el programa SPSS se hace marcando *Analizar + Explorar + Gráficos + Gráficos con pruebas de normalidad*. Los resultados obtenidos pueden observarse en las siguientes imágenes.
 
 
 
-```{r, echo=FALSE,fig.cap= "Prueba de normalidad Shapiro-Wilks en el programa SPSS",out.width="70%"}
+```{r, echo=FALSE,fig.cap= "Prueba de normalidad Shapiro-Wilk en el programa SPSS",out.width="70%"}
 knitr::include_graphics("figurasR/shapiro1.jpg")
 ```
 

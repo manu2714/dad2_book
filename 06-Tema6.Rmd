@@ -309,7 +309,7 @@ Cuando se dan este tipo de relaciones no es adecuado aplicar los modelos de regr
 
 #### Normalidad
 
-Este supuesto implica que los errores del modelo siguen una distribución normal. Para evaluar este modelo basta con calcular la diferencia entre las puntuaciones observadas y las predichas (residuales) y aplicar el estadístico de Shapiro-Wilks (SW) para determinar su significación. Aplicado al ejemplo de la figura 1 tenemos:
+Este supuesto implica que los errores del modelo siguen una distribución normal. Para evaluar este modelo basta con calcular la diferencia entre las puntuaciones observadas y las predichas (residuales) y aplicar el estadístico de Shapiro-Wilk (SW) para determinar su significación. Aplicado al ejemplo de la figura 1 tenemos:
 
 ```{r,err, echo= TRUE,results= 'markup',message=FALSE,warning=FALSE}
 shapiro.test(mod$residuals)
