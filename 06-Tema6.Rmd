@@ -201,7 +201,13 @@ $$
 Supongamos que estamos interesados en estudiar si la puntuación en la primera medida del Boston depende de la edad y del género. En la siguiente figura aparece representada la relación entre edad y medida 1 del Boston para hombres y para mujeres:
 
 
-```{r,fig3,echo=FALSE,fig.height= 3,fig.cap = 'Relación entre la edad y el Boston 1 en función del género',results='asis',fig.align='center',message=FALSE}
+
+```{r, echo=FALSE, out.width="90%", fig.cap="Relación entre la edad y el BOSTON1 en función de la edad"}
+knitr::include_graphics("figurasR/rmSexo.png")
+```
+
+
+```{r,fig3,echo=FALSE,fig.height= 3,fig.cap = 'Relación entre la edad y el Boston 1 en función del género',results='asis',fig.align='center',message=FALSE,eval=FALSE}
 fig3<- ggplot(dat, aes(x= edad, y = BOSTON1)) + geom_point(size=3) + geom_smooth(method= 'lm')
 fig4<- fig3 + xlab('Edad') + ylab('Puntuación en el Boston 1')
 fig4 + facet_grid(.~sexo) 
