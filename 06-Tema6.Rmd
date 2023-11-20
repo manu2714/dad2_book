@@ -34,10 +34,17 @@ En la figura siguiente puede apreciarse visualmente que existe una relación ent
 
 
 
-```{r,fig0,echo=FALSE,fig.height= 3,fig.cap = 'Relación entre la edad y BOSTON 1', resulTS='asis',message=FALSE}
+```{r, echo=FALSE, out.width="90%", fig.cap="Relación entre la edad y BOSTON1"}
+knitr::include_graphics("figurasR/regBoston1Edad.png")
+```
+
+
+```{r,fig0,echo=FALSE,fig.height= 3,fig.cap = 'Relación entre la edad y BOSTON 1',eval=FALSE,resulTS='asis',message=FALSE}
 library(ggplot2)
 fig1<- ggplot(dat, aes(x= edad, y = BOSTON1 )) + geom_point(size=3) + geom_smooth(method= 'lm')
 fig1 + xlab('Edad') + ylab('Puntuación en el Boston')
+
+
 ``` 
 
 Por lo general, en la investigación científica se desea cuantificar las relaciones entre variables, siendo el *coeficiente de correlación de Pearson* una de las pruebas más utilizadas. Se define de la siguiente forma:
@@ -93,7 +100,14 @@ tenemos una relación de tipo \emph{inverso}. Por el contrario, si el parámetro
 
 Utilizando la base de datos anterior vamos a estudiar las relaciones entre la edad y la puntuación en el test de Boston en la primera medición. Asimismo, queremos estudiar si están relacionadas las dos medidas del Boston.
 
-```{r,fig1,echo=FALSE,fig.height=3,fig.cap = 'Relación entre las dos medidas del Boston' , results='asis', message=FALSE}
+
+
+```{r, echo=FALSE, out.width="90%", fig.cap="Relación entre las medidas de BOSTON2 y BOSTON1"}
+knitr::include_graphics("figurasR/regBoston1Boston2.png")
+```
+
+
+```{r,fig1,echo=FALSE,fig.height=3,fig.cap = 'Relación entre las dos medidas del Boston' , results='asis', message=FALSE,eval=FALSE}
 fig2<- ggplot(dat, aes(x= BOSTON1, y = BOSTON2)) + geom_point(size=3) + geom_smooth(method= 'lm')
 fig2 + xlab('Puntuación en el Boston 1') + ylab('Puntuación en el Boston 2')
 
@@ -292,7 +306,7 @@ No existe un criterio unívoco para determinar la importancia de una variable en
 
 ## Supuestos del modelo
 
-Una vez obtenido el modelo conviene preguntarse por la idoneidad del mismo. Además del supuesto de linealidad ya mencionado, tambien es conveniente evaluar la normalidad de los errores y la homogeneidad de las varianzas de la variable Y condicionada a cada valor de X. Asimismo, es conveniente determinar la independencia de las observaciones.
+Una vez obtenido el modelo conviene preguntarse por la idoneidad del mismo. Además del supuesto de linealidad ya mencionado, también es conveniente evaluar la normalidad de los errores y la homogeneidad de las varianzas de la variable Y condicionada a cada valor de X. Asimismo, es conveniente determinar la independencia de las observaciones.
 
 #### Linealidad
 
