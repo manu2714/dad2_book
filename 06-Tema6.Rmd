@@ -217,8 +217,8 @@ La gráfica indica que la relación entre edad y puntuación en el Boston sigue 
 
 
 
-```{r,rm1,echo=FALSE,results='asis'}
-mod3= lm(BOSTON1~edad+sexo,data=dat,eval=T)
+```{r,rm1,echo=FALSE,results='asis', message=FALSE,warning=FALSE}
+mod3= lm(BOSTON1~edad+sexo,data=dat)
 a<-xtable(mod3,caption= "Regresión de la medida del Boston en el momento 1 en función de la edad y el sexo")
 print(a, comment = F)
 ``` 
