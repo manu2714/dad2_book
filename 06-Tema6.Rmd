@@ -118,7 +118,7 @@ Podemos observar que entre las dos variables de la figura 1 existe una relación
 
 La recta de regresión obtenida para la figura 1 es:
 
-```{r,reg1,echo=FALSE,results='asis'}
+```{r,reg1,echo=FALSE,results='markdown'}
 mod= lm(BOSTON1~edad,data=dat)
 a<-xtable(mod,caption = "Regresión de la medida del BOSTON1 sobre la edad")
 print(a, comment = F)
@@ -128,8 +128,9 @@ En otras ocasiones nos encontraremos con relaciones directas como en el caso de 
 
 ```{r,reg2,echo=FALSE,results='asis'}
 mod2= lm(BOSTON2~BOSTON1,data=dat)
-a<-xtable(mod2,caption = "Regresión de la medida del BOSTON2 sobre BOSTON1")
-print(a, comment = F)
+# a<-xtable(mod2,caption = "Regresión de la medida del BOSTON2 sobre BOSTON1")
+# print(a, comment = F)
+summary(mod2)
 ``` 
 
 En ambos casos el parámetro $\beta_{1}$ es significativo. La única diferencia es que en la relación de la figura 2 el valor es negativo (- 0.325) y en el de la figura 2 positivo (1.041). En el caso de la figura 2, la recta de regresión obtenida es:
@@ -201,26 +202,19 @@ $$
 Supongamos que estamos interesados en estudiar si la puntuación en la primera medida del Boston depende de la edad y del género. En la siguiente figura aparece representada la relación entre edad y medida 1 del Boston para hombres y para mujeres:
 
 
-```{r, echo=FALSE, out.width="90%", fig.cap="Relación entre la edad y el BOSTON1 en función del sexo"}
+```{r, echo=FALSE, out.width="90%", fig.align ="center",fig.cap="Relación entre la edad y el BOSTON1 en función del sexo"}
 knitr::include_graphics("figurasR/rmSexo.png")
 ```
 
-
-```{r,fig3,echo=FALSE,fig.height= 3,fig.cap = 'Relación entre la edad y el Boston 1 en función del género',results='asis',fig.align='center',message=FALSE,eval=FALSE}
-fig3<- ggplot(dat, aes(x= edad, y = BOSTON1)) + geom_point(size=3) + geom_smooth(method= 'lm')
-fig4<- fig3 + xlab('Edad') + ylab('Puntuación en el Boston 1')
-fig4 + facet_grid(.~sexo) 
-
-``` 
 
 La gráfica indica que la relación entre edad y puntuación en el Boston sigue siendo negativa. Sin embargo, esta relación presenta mayor o menor intensidad dependiendo del género. En las mujeres la recta de regresión está menos inclinada indicando que la disminución en la puntuación en el Boston es bastante más atenuada que en los hombres. Realizando el análisis de regresión obtenemos los siguientes resultados:
 
 
 
-```{r,rm1,echo=FALSE,results='asis', message=FALSE,warning=FALSE}
+```{r,rm1,echo=FALSE,results='markup', message=FALSE,warning=FALSE}
 mod3= lm(BOSTON1~edad+sexo,data=dat)
-a<-xtable(mod3,caption= "Regresión de la medida del Boston en el momento 1 en función de la edad y el sexo")
-print(a, comment = F)
+summary(mod3)
+
 ``` 
 
 Estos resultados indican que el género tiene un efecto protector sobre el deterioro de la memoria semántica en las personas mayores. Comparando hombres y mujeres de la misma edad, las mujeres obtendrán una menor puntuación que los hombres en el test de denominación de Boston.
