@@ -118,15 +118,15 @@ Podemos observar que entre las dos variables de la figura 1 existe una relación
 
 La recta de regresión obtenida para la figura 1 es:
 
-```{r,reg1,echo=FALSE,results='asis'}
+```{r,reg1,echo=FALSE,results='markup'}
 mod= lm(BOSTON1~edad,data=dat)
 a<-xtable(mod,caption = "Regresión de la medida del BOSTON1 sobre la edad")
-print(a, comment = F)
+summary(mod)
 ``` 
 
 En otras ocasiones nos encontraremos con relaciones directas como en el caso de la figura 2. Se obtiene que a medida que aumenta la puntuación en el primer momento del Boston también aumenta la puntuación obtenida en el Boston en el momento 2. La recta de regresión obtenida para la figura 2 es:
 
-```{r,reg2,echo=FALSE,results='asis'}
+```{r,reg2,echo=FALSE,results='markup'}
 mod2= lm(BOSTON2~BOSTON1,data=dat)
 # a<-xtable(mod2,caption = "Regresión de la medida del BOSTON2 sobre BOSTON1")
 # print(a, comment = F)
