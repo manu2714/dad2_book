@@ -118,7 +118,7 @@ Podemos observar que entre las dos variables de la figura 1 existe una relación
 
 La recta de regresión obtenida para la figura 1 es:
 
-```{r,reg1,echo=FALSE,results='markdown'}
+```{r,reg1,echo=FALSE,results='asis'}
 mod= lm(BOSTON1~edad,data=dat)
 a<-xtable(mod,caption = "Regresión de la medida del BOSTON1 sobre la edad")
 print(a, comment = F)
