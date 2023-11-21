@@ -331,7 +331,7 @@
 }
 
 @Book{sanmartin,
-  author    = {Pardo, A and Sanmartin, R},
+  author    = {Pardo, A and San Martin, R},
   publisher = {Síntesis},
   title     = {Análisis de datos en las ciencias sociales y de la salud {II}},
   year      = {2011},
