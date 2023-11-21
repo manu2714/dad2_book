@@ -146,10 +146,12 @@ Según estos resultados, el punto de corte de la recta con el eje de ordenadas e
 
 En el modelo de regresión las variables predictoras pueden ser cuantitativas o cualitativas. Un ejemplo de variable cualitativa puede ser el género. Los resultados del modelo de regresión que relaciona el género con la puntuación en el test de Boston aparece en la siguiente tabla:
 
-```{r,reg3,echo=FALSE,results='asis'}
+```{r,reg3,echo=FALSE,results='markup'}
 mod3= lm(BOSTON1~sexo,data=dat)
-a<-xtable(mod3,caption = "Regresión de la medida del BOSTON1 sobre la variable sexo")
-print(a, comment = F)
+#a<-xtable(mod3,caption = "Regresión de la medida del BOSTON1 sobre la variable sexo")
+#print(a, comment = F)
+summary(mod3)
+
 ``` 
 
 \noindent Observamos que la recta de regresión obtenida es:
@@ -160,7 +162,7 @@ $$
 $$
 Y_{j} = 49,10 \hspace{35mm} para\; mujeres
 $$
-Como la variable sexo se ha categorizado como 0 si la persona es mujer y 1 si es hombre el valor esperado en la prueba de Boston será mayor para los hombres que para las mujeres. O lo que es lo mismo, la "intercept" de la ecuación de regresión se corresponde con el valor medio de las mujeres en el test de Boston. Esta es la codificación recomendable para facilitar la interpretación del modelo. Sin embargo, cualquier otra codificación es posible. No obstante, @hayes recomienda usar valores cuya diferencia entre los valores sea igual a 1. De este modo, el coeficiente $\beta_{1}$ se podrá interpretar como la diferencia exitente entre las medias de los dos grupos.  
+Como la variable sexo se ha categorizado como 0 si la persona es mujer y 1 si es hombre el valor esperado en la prueba de Boston será mayor para los hombres que para las mujeres. O lo que es lo mismo, la "intercept" de la ecuación de regresión se corresponde con el valor medio de las mujeres en el test de Boston. Esta es la codificación recomendable para facilitar la interpretación del modelo. Sin embargo, cualquier otra codificación es posible. No obstante, @hayes recomienda usar valores cuya diferencia entre los valores sea igual a 1. De este modo, el coeficiente $\beta_{1}$ se podrá interpretar como la diferencia existente entre las medias de los dos grupos.  
 
 
 ### Realización de pronósticos
@@ -253,12 +255,12 @@ $$
 Comparando este resultado con el de las tablas para una F con 1 y \emph{n-p -1} grados de libertad y un nivel de significación del 0.05 obtenemos un valor de F(1,27) = 4.21. Por tanto, a pesar de aumentar el índice de ajuste, éste incremento no resulta ser significativo por lo que el modelo óptimo no cambia. Introducir la variable educación en el modelo no mejora significativamente el ajuste. Si calculamos la raiz cuadrada de 2.79 obtenemos el valor del estadístico t correspondiente al parámetro beta de la variable educación tal y como puede observarse en la siguiente tabla:
 
 
-```{r echo=FALSE,results='asis',message=FALSE}
+```{r echo=FALSE,results='markup',message=FALSE}
 library(leaps)
 modelo2= lm(BOSTON1~edad+edu,data=dat)
-#summary(modelo2)
-a2<-xtable(modelo2,caption= "Regresión de la medida BOSTON1 en función de la edad y la educación")
-print(a2, comment = F)
+summary(modelo2)
+#a2<-xtable(modelo2,caption= "Regresión de la medida BOSTON1 en función de la edad y la educación")
+#print(a2, comment = F)
 #summary(modelo)$adjr2
 ``` 
 
@@ -269,7 +271,7 @@ El método de selección hacia atrás comienza con el modelo máximo. En cada pa
 
 ```{r echo=T,results='markup',message=FALSE}
 library(stats)
-dat1<- dat[,c(1,5,7,8)]
+dat1<- dat[,c(1,5:7,8)]
 names(dat1)
 n.model<- lm(BOSTON1~1,data=dat1)
 all<- lm(BOSTON1~.,data=dat1)
@@ -302,7 +304,7 @@ print(a,comment = F)
 
 ### Importancia de las variables
  
-No existe un criterio unívoco para determinar la importancia de una variable en el modelo de regresión. En ocasiones, se considera como más importante el que una variable contribuya en mayor medida al cambio esperado en la variable Y. En este caso, la importancia de las variables se puede establecer en base a los \textbf{coeficientes de regresión tipificados} [@sanmartin]. Sin embargo, también puede utilizarse el criterio de aquella variable que más contribuye al ajuste global. Si es el caso, entonces ha de utilizarse el cuadrado del \textbf{coeficiente de correlación semiparcial} para determinar la importancia de cada variable.
+No existe un criterio unívoco para determinar la importancia de una variable en el modelo de regresión. En ocasiones, se considera como más importante el que una variable contribuya en mayor medida al cambio esperado en la variable Y. En este caso, la importancia de las variables se puede establecer en base a los **coeficientes de regresión tipificados** [@sanmartin]. Sin embargo, también puede utilizarse el criterio de aquella variable que más contribuye al ajuste global. Si es el caso, entonces ha de utilizarse el cuadrado del **coeficiente de correlación semiparcial** para determinar la importancia de cada variable.
 
 
 ## Supuestos del modelo

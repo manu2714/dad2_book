@@ -369,7 +369,7 @@ Esta prueba no necesita que se cumplan los supuestos de normalidad y homogeneida
 
 
 
-```{r, echo=FALSE,fig.cap= "Esquema del diseño para la prueba de Kruskall-Wallis",out.width="70%"}
+```{r, echo=FALSE,fig.cap= "Esquema del diseño para la prueba de Kruskall-Wallis",out.width="70%",fig.align='center'}
 knitr::include_graphics("figurasR/kw1c.png")
 ```
 
